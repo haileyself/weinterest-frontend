@@ -1,0 +1,58 @@
+.mypage {
+  .mypage_wrapper {
+    border: 1px solid red;
+    position: relative;
+  }
+  .header_wrapper {
+    display: flex;
+    width: 100%;
+  }
+  .header_container {
+    border: 1px solid black;
+    background-color: yellow;
+    height: 65px;
+    width: 100%;
+  }
+  .subheader_container {
+    height: 73px;
+    position: fixed;
+    top: 65px;
+    border: 1px solid purple;
+    width: 100%;
+  }
+  .content_wrapper {
+    top: 65px;
+    position: relative;
+  }
+  .user_info_container {
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .user_profile_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+  }
+  .user_profile {
+    width: 75%;
+  }
+  .user_pic_container {
+    width: 25%;
+  }
+
+  .content_wrapper {
+    display: flex;
+  }
+
+  .content_list {
+    display: flex;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 850px;
+    justify-content: center;
+  }
+}

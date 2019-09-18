@@ -11,7 +11,7 @@ class Login extends React.Component {
     this.setState({ valueId: e.target.value });
   };
   move = () => {
-    this.props.history.push("sigup");
+    this.props.history.push("signup");
   };
   render() {
     return (

@@ -1,7 +1,14 @@
 import React from "react";
 import "./Detail.scss";
-
-class Deail extends React.Component {
+import DetailImg from "./DetailImg";
+class Detail extends React.Component {
+  constructor() {
+    super();
+    this.state = { commnet: true };
+  }
+  onchangeFuc = () => {
+    this.setState({ commnet: false });
+  };
   render() {
     return (
       <div className="detail_body">
@@ -18,29 +25,40 @@ class Deail extends React.Component {
                   </div>
                 </div>
                 <div className="detail_main_page_top_send">
+                  <div className="hover"></div>
                   <div className="detail_main_page_top_send_wrap">
                     <div className="detail_main_page_top_send_img_wrap">
-                      <i className="fad fa-arrow-from-bottom"> </i>
+                      <i className="fas fa-upload"></i>
                     </div>
                     <div className="detail_main_page_top_send_text">보내기</div>
                   </div>
                 </div>
                 <div className="detail_main_page_top_save">
                   <div className="detail_main_page_top_save_1">
+                    <div className="hover"></div>
                     <div className="detail_main_page_top_save_1_text">
                       아이폰 배경
                     </div>
                     <div className="detail_main_page_top_save_1_img">
-                      <i className="far fa-angle-down"></i>
+                      <i class="fas fa-chevron-down"></i>
                     </div>
                   </div>
-                  <div className="detail_main_page_top_save_2">저장</div>
+                  <div className="detail_main_page_top_save_2">
+                    <div className="hover">저장</div>저장
+                  </div>
                 </div>
               </div>
             </div>
             <div className="detail_main_page_box_wrap">
-              <div className="detail_mail_page_box_img">
+              <div className="detail_main_page_box_img">
                 <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                <div className="img_text_wrap">
+                  <div className="img_box">
+                    <i class="fas fa-location-arrow"></i>
+
+                    <div className="text">hififunk.tumblr.com</div>
+                  </div>
+                </div>
               </div>
               <div className="detail_main_page_box_text">
                 <div className="detail_main_page_box_text_top1">
@@ -64,23 +82,56 @@ class Deail extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="detail_main_page_moveButton"></div>
+                <div className="detail_main_page_moveButton">
+                  <div className="hover"></div>
+                  <div className="link_box">
+                    <div className="moveButton_img">
+                      <i class="fas fa-location-arrow"></i>
+                    </div>
+                    <div className="moveButton_text">hififunk.tumblr.com</div>
+                  </div>
+                </div>
                 <div className="detail_main_page_box_text_top2">
                   <div className="detail_main_page_box_text_top2_title">
                     사진 및 댓글
                   </div>
                   <div className="detail_main_page_box_text_top2_title_button_wrap">
-                    <div className="detail_main_page_box_text_top2_title_button1">
-                      사진 1개
-                    </div>
-                    <div className="detail_main_page_box_text_top2_title_button2">
-                      댓글 1개
+                    <button className="detail_main_page_box_text_top2_title_button1">
+                      사진
+                    </button>
+                    <div
+                      onClick={this.onchangeFuc}
+                      className="detail_main_page_box_text_top2_title_button2"
+                    >
+                      댓글
                     </div>
                   </div>
-                  <div className="detail_main_page_box_text_top2_title_imgBox">
-                    <div></div>
+                  <div>
+                    <DetailImg />
+                    {/* <div className="detail_main_page_box_text_top2_title_imgBox">
+                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                    </div>
+                    <div className="detail_main_page_commnet">
+                      <div className="commnet_text_wrap">
+                        <div className="commnet_text">
+                          이 핀을 시도해보셨나요?
+                        </div>
+                        <div className="commnet_text">
+                          사진을 추가하여 경험을 공유해주세요
+                        </div>
+                      </div>
+                      <div className="commnet_text_button">
+                        <div
+                          className="hover
+                      "
+                        ></div>
+                        사진 추가
+                      </div>
+                    </div> */}
                   </div>
-                  <div>댓글</div>
                 </div>
               </div>
             </div>
@@ -96,4 +147,4 @@ class Deail extends React.Component {
   }
 }
 
-export default Deail;
+export default Detail;

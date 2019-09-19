@@ -18,6 +18,7 @@ class PhotoBox extends Component {
             </a>
           </div>
           <p>추천 핀</p>
+          {/* <i class="fas fa-ellipsis-h dotdotdot"></i> */}
         </figure>
       </div>
     );

@@ -1,7 +1,6 @@
 .photoCompo {
   margin-bottom: 2px;
   border-radius: 10px;
-
   cursor: pointer;
   &:hover {
     background-color: #efefef;
@@ -60,8 +59,6 @@
       border-radius: 10px;
       background-color: #e83e33;
       color: white;
-      font-size: 15px;
-      font-weight: 800;
       visibility: hidden;
 
       &:hover {
@@ -69,12 +66,13 @@
       }
 
       .fas {
-        font-size: 20px;
+        font-size: 18px;
         margin: 1px;
       }
-      .span {
-        font-size: 22px;
+      span {
+        font-size: 16px;
         margin: 2px;
+        font-weight: 700;
       }
     }
   }

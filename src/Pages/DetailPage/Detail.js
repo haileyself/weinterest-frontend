@@ -13,11 +13,14 @@ class Detail extends React.Component {
   onchangeFuc2 = () => {
     this.setState({ commnet: true });
   };
+  pageBack = () => {
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div className="detail_body">
         <div className="detail_wrap">
-          <div className="detail_back_button">
+          <div onClick={this.pageBack} className="detail_back_button">
             <i className="fas fa-arrow-left back"></i>
           </div>
           <div className="detail_main_page">
@@ -119,50 +122,12 @@ class Detail extends React.Component {
                     ) : (
                       <DetailComment />
                     )}
-                    {/* <DetailComment /> */}
-                    {/* <div className="commnet_text">
-                      피드백을 공유하거나 질문을 하거나 칭찬을 남겨주세요
-                    </div>
-                    <div>코맨트 나오는곳</div>
-                    <div className="comment_box">
-                      <div className="commen_box_img">
-                        <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      </div>
-                      <input
-                        placeholder="댓글 추가"
-                        className="comment_box_input"
-                      ></input>
-                    </div> */}
-                    {/* <DetailImg /> */}
-                    {/* <div className="detail_main_page_box_text_top2_title_imgBox">
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                    </div>
-                    <div className="detail_main_page_commnet">
-                      <div className="commnet_text_wrap">
-                        <div className="commnet_text">
-                          이 핀을 시도해보셨나요?
-                        </div>
-                        <div className="commnet_text">
-                          사진을 추가하여 경험을 공유해주세요
-                        </div>
-                      </div>
-                      <div className="commnet_text_button">
-                        <div
-                          className="hover
-                      "
-                        ></div>
-                        사진 추가
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="detail_wrap_exit ">
+          <div onClick={this.pageBack} className="detail_wrap_exit ">
             <i className="fas fa-times img"></i>
           </div>
         </div>

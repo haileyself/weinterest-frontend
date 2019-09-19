@@ -1,0 +1,81 @@
+.photoCompo {
+  margin-bottom: 2px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  &:hover {
+    background-color: #efefef;
+  }
+  p {
+    visibility: hidden;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  &:hover p {
+    visibility: visible;
+  }
+  &:hover .pinButton {
+    z-index: 1;
+    visibility: visible;
+    cursor: pointer;
+  }
+
+  &:hover .xoxo {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  figure {
+    position: relative;
+    margin: 3px 0 8px;
+    padding: 8px;
+    padding-bottom: 12px;
+    display: inline-block;
+
+    .xoxoxo {
+      position: relative;
+      line-height: 0;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .xoxo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    }
+    .pinButton {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 10px;
+      right: 7px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #e83e33;
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      visibility: hidden;
+
+      &:hover {
+        background-color: #d1372d;
+      }
+
+      .fas {
+        font-size: 20px;
+        margin: 1px;
+      }
+      .span {
+        font-size: 22px;
+        margin: 2px;
+      }
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import Detail from "./Pages/DetailPage";
-
 import Main from "Pages/Main";
 import Header from "Components/Header";
 

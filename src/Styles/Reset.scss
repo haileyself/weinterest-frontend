@@ -66,6 +66,7 @@ summary,
 time,
 mark,
 audio,
+button,
 video {
   margin: 0;
   padding: 0;
@@ -167,4 +168,27 @@ select {
 }
 ​ textarea {
   resize: none;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  box-sizing: border-box;
+}
+
+button:focus,
+button:active {
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+div {
+  box-sizing: border-box;
 }

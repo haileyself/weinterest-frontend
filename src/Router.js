@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Mypage from "Pages/Mypage";
 import Main from "Pages/Main";
-import Header from "Components/Header/Header";
+import Header from "Components/Header";
 import Detail from "Pages/DetailPage";
 import Login from "Pages/Login";
 

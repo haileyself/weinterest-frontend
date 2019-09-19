@@ -1,5 +1,5 @@
 import React from 'react';
-import './MyPage.scss';
+import './Mypage.scss';
 
 class Mypage extends React.Component {
     constructor() {

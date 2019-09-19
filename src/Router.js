@@ -4,6 +4,7 @@ import Detail from "Pages/DetailPage";
 import Main from "Pages/Main";
 import Header from "Components/Header";
 import Login from "Pages/Login";
+import Signup from "Pages/Signup";
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends React.Component {
           <Route exact path="/detailPage" component={Detail} />
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     );

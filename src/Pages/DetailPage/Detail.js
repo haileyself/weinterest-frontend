@@ -1,6 +1,7 @@
 import React from "react";
 import "./Detail.scss";
 import DetailImg from "./DetailImg";
+import DetailComment from "./DetailComment";
 class Detail extends React.Component {
   constructor() {
     super();
@@ -8,6 +9,9 @@ class Detail extends React.Component {
   }
   onchangeFuc = () => {
     this.setState({ commnet: false });
+  };
+  onchangeFuc2 = () => {
+    this.setState({ commnet: true });
   };
   render() {
     return (
@@ -96,9 +100,12 @@ class Detail extends React.Component {
                     사진 및 댓글
                   </div>
                   <div className="detail_main_page_box_text_top2_title_button_wrap">
-                    <button className="detail_main_page_box_text_top2_title_button1">
+                    <div
+                      onClick={this.onchangeFuc2}
+                      className="detail_main_page_box_text_top2_title_button1"
+                    >
                       사진
-                    </button>
+                    </div>
                     <div
                       onClick={this.onchangeFuc}
                       className="detail_main_page_box_text_top2_title_button2"
@@ -107,7 +114,26 @@ class Detail extends React.Component {
                     </div>
                   </div>
                   <div>
-                    <DetailImg />
+                    {this.state.commnet === true ? (
+                      <DetailImg />
+                    ) : (
+                      <DetailComment />
+                    )}
+                    {/* <DetailComment /> */}
+                    {/* <div className="commnet_text">
+                      피드백을 공유하거나 질문을 하거나 칭찬을 남겨주세요
+                    </div>
+                    <div>코맨트 나오는곳</div>
+                    <div className="comment_box">
+                      <div className="commen_box_img">
+                        <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                      </div>
+                      <input
+                        placeholder="댓글 추가"
+                        className="comment_box_input"
+                      ></input>
+                    </div> */}
+                    {/* <DetailImg /> */}
                     {/* <div className="detail_main_page_box_text_top2_title_imgBox">
                       <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
                       <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>

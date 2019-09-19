@@ -10,14 +10,12 @@ class DetailImg extends React.Component {
           <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
           <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
         </div>
-        <div className="detail_main_page_commnet">
-          <div className="commnet_text_wrap">
-            <div className="commnet_text">이 핀을 시도해보셨나요?</div>
-            <div className="commnet_text">
-              사진을 추가하여 경험을 공유해주세요
-            </div>
+        <div className="detail_main_page_img">
+          <div className="img_text_img">
+            <div className="img_img">이 핀을 시도해보셨나요?</div>
+            <div className="img_text">사진을 추가하여 경험을 공유해주세요</div>
           </div>
-          <button className="commnet_text_button">
+          <button className="img_text_button">
             <div
               className="hover
     "

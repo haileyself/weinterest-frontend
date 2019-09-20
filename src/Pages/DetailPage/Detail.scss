@@ -496,30 +496,16 @@
     font-size: 21px;
     text-align: center;
   }
-  .detail_similar_img {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
-    padding: 0px 75px 0px 75px;
-  }
-}
-@media (max-width: 1500px) {
-  .detail_body {
+  .detail_similar_img_box {
+    margin-top: 64px;
+    padding: 24px 12px;
+    display: flex;
+    justify-content: center;
     .detail_similar_img {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-gap: 10px;
-      padding: 0px 75px 0px 75px;
-    }
-  }
-}
-@media (max-width: 1200px) {
-  .detail_body {
-    .detail_similar_img {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 10px;
-      padding: 0px 75px 0px 75px;
+      width: 100%;
+      max-width: 1250px;
+      column-width: 248px;
+      column-gap: 2px;
     }
   }
 }

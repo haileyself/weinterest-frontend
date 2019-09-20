@@ -2,8 +2,10 @@ import React from "react";
 import DetailImg from "./DetailImg";
 import DetailComment from "./DetailComment";
 import PhotoBox from "Components/PhotoBox";
-import "./Detail.scss";
 import Data from "./DetailData";
+import data from "Components/PhotoBox/data";
+import "./Detail.scss";
+
 class Detail extends React.Component {
   constructor() {
     super();
@@ -154,14 +156,12 @@ class Detail extends React.Component {
           </div>
         </div>
         <div className="detail_similar_title">유사한 핀 더보기</div>
-        <div className="detail_similar_img">
-          <PhotoBox />
-          <PhotoBox />
-          <PhotoBox />
-          <PhotoBox />
-          <PhotoBox />
-          <PhotoBox />
-          이미지들어오는곳
+        <div className="detail_similar_img_box">
+          <div className="detail_similar_img">
+            {data.map((el, i) => (
+              <PhotoBox info={el} key={i} />
+            ))}
+          </div>
         </div>
       </div>
     );

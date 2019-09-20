@@ -1,21 +1,36 @@
 import React from "react";
-import "./Detail.scss";
 import DetailImg from "./DetailImg";
 import DetailComment from "./DetailComment";
+import PhotoBox from "Components/PhotoBox";
+import "./Detail.scss";
+import { get } from "https";
+
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { commnet: true };
+    this.state = { activeTap: "imgBox", isDetailPage: [] };
   }
-  onchangeFuc = () => {
-    this.setState({ commnet: false });
+
+  showTap = e => {
+    this.setState({ activeTap: e });
   };
-  onchangeFuc2 = () => {
-    this.setState({ commnet: true });
-  };
+
   pageBack = () => {
     this.props.history.push("/");
   };
+  componentDidMount() {
+    // fetch("앤드포인트", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // })
+    //   .then(Response => Response.json)
+    //   .then(Response => {
+    //     this.setState(isDetailPage:Response);
+    //   });
+  }
+
   render() {
     return (
       <div className="detail_body">
@@ -51,14 +66,14 @@ class Detail extends React.Component {
                     </div>
                   </div>
                   <div className="detail_main_page_top_save_2">
-                    <div className="hover">저장</div>저장
+                    <div className="hover"></div>저장
                   </div>
                 </div>
               </div>
             </div>
             <div className="detail_main_page_box_wrap">
               <div className="detail_main_page_box_img">
-                <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                <img src="https://images.velog.io/post-images/jingyong91/f8569140-db45-11e9-acf6-d3e316309cb6/-.jpeg"></img>
                 <div className="img_text_wrap">
                   <div className="img_box">
                     <i class="fas fa-location-arrow"></i>
@@ -104,24 +119,29 @@ class Detail extends React.Component {
                   </div>
                   <div className="detail_main_page_box_text_top2_title_button_wrap">
                     <div
-                      onClick={this.onchangeFuc2}
-                      className="detail_main_page_box_text_top2_title_button1"
+                      onClick={() => this.showTap("imgBox")}
+                      className={`detail_main_page_box_text_top2_title_button1 ${
+                        this.state.activeTap === "imgBox"
+                          ? "active_tab_button"
+                          : ""
+                      }`}
                     >
                       사진
                     </div>
                     <div
-                      onClick={this.onchangeFuc}
-                      className="detail_main_page_box_text_top2_title_button2"
+                      onClick={() => this.showTap("commentTap")}
+                      className={`detail_main_page_box_text_top2_title_button1 ${
+                        this.state.activeTap === "commentTap"
+                          ? "active_tab_button"
+                          : ""
+                      }`}
                     >
                       댓글
                     </div>
                   </div>
                   <div>
-                    {this.state.commnet === true ? (
-                      <DetailImg />
-                    ) : (
-                      <DetailComment />
-                    )}
+                    {this.state.activeTap === "imgBox" && <DetailImg />}
+                    {this.state.activeTap === "commentTap" && <DetailComment />}
                   </div>
                 </div>
               </div>
@@ -131,8 +151,16 @@ class Detail extends React.Component {
             <i className="fas fa-times img"></i>
           </div>
         </div>
-        <div className="detail_similar_box">유사한 핀 더보기</div>
-        <div>이미지들어오는곳</div>
+        <div className="detail_similar_title">유사한 핀 더보기</div>
+        <div className="detail_similar_img">
+          <PhotoBox />
+          <PhotoBox />
+          <PhotoBox />
+          <PhotoBox />
+          <PhotoBox />
+          <PhotoBox />
+          이미지들어오는곳
+        </div>
       </div>
     );
   }

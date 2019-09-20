@@ -3,8 +3,7 @@ import DetailImg from "./DetailImg";
 import DetailComment from "./DetailComment";
 import PhotoBox from "Components/PhotoBox";
 import "./Detail.scss";
-import { get } from "https";
-
+import Data from "./DetailData";
 class Detail extends React.Component {
   constructor() {
     super();
@@ -72,24 +71,25 @@ class Detail extends React.Component {
               </div>
             </div>
             <div className="detail_main_page_box_wrap">
-              <div className="detail_main_page_box_img">
-                <img src="https://images.velog.io/post-images/jingyong91/f8569140-db45-11e9-acf6-d3e316309cb6/-.jpeg"></img>
-                <div className="img_text_wrap">
-                  <div className="img_box">
-                    <i class="fas fa-location-arrow"></i>
-
-                    <div className="text">hififunk.tumblr.com</div>
+              <a href={Data.link}>
+                <div className="detail_main_page_box_img">
+                  <img src={Data.img}></img>
+                  <div className="img_text_wrap">
+                    <div className="img_box">
+                      <i class="fas fa-location-arrow"></i>
+                      {<div className="text">{Data.url}</div>}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
               <div className="detail_main_page_box_text">
                 <div className="detail_main_page_box_text_top1">
                   <div className="detail_main_page_box_text_top1_img">
-                    <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                    <img src={Data.idImg}></img>
                   </div>
                   <div className="detail_main_page_box_text_top1_text">
                     <div className="detail_main_page_box_text_top1_text1">
-                      <a>회원님</a> 님이 <a>아이폰배경</a>에 저장함
+                      <a>{Data.id}</a> 님이 <a>아이폰배경</a>에 저장함
                     </div>
                     <div className="detail_main_page_box_text_top1_text2">
                       여자 앉는 자세
@@ -104,15 +104,17 @@ class Detail extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="detail_main_page_moveButton">
-                  <div className="hover"></div>
-                  <div className="link_box">
-                    <div className="moveButton_img">
-                      <i class="fas fa-location-arrow"></i>
+                <a href={Data.link}>
+                  <div className="detail_main_page_moveButton">
+                    <div className="hover"></div>
+                    <div className="link_box">
+                      <div className="moveButton_img">
+                        <i class="fas fa-location-arrow"></i>
+                      </div>
+                      <div className="moveButton_text">{Data.url}</div>
                     </div>
-                    <div className="moveButton_text">hififunk.tumblr.com</div>
                   </div>
-                </div>
+                </a>
                 <div className="detail_main_page_box_text_top2">
                   <div className="detail_main_page_box_text_top2_title">
                     사진 및 댓글

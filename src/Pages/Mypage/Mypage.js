@@ -1,12 +1,23 @@
 import React from 'react';
+import Mypicframe from './Mypicframe';
+import Fourpics from './Fourpics';
+import PhotoBox from "Components/PhotoBox";
 import './Mypage.scss';
+import 'Components/PhotoBox/PhotoBox.scss';
+import Boadrlist from './Boardlist';
 
 class Mypage extends React.Component {
     constructor() {
         super();
+        this.state = {activeTab : 'boardTab'};
     }
 
+    pickTab = (tab) => {
+        this.setState({ activeTab : tab });
+    }
+    
     render () {
+    // console.log(this.state.activeTab);
     return (
         <div className="mypage">
             <div className="mypage_wrapper">
@@ -56,10 +67,12 @@ class Mypage extends React.Component {
                             <div className="content_list">
                                 <div className="ct_choice_li">
                                     <div className="choice_list ">
-                                        <button className="choice_item choice_item_board">보드</button>
+                                        <button onClick={()=>{this.pickTab('boardTab')}}
+                                        className={`choice_item  ${this.state.activeTab === 'boardTab' ? 'active_tab_btn' : ''}`}>보드</button>
                                     </div>
                                     <div className="choice_list">
-                                        <button className="choice_item">핀</button>
+                                        <button onClick={()=>{this.pickTab('pinTab')}}
+                                        className={`choice_item  ${this.state.activeTab === 'pinTab' ? 'active_tab_btn' : ''}`}>핀</button>
                                     </div>
                                     <div className="choice_list">
                                         <button className="choice_item">시도</button>
@@ -70,17 +83,20 @@ class Mypage extends React.Component {
                                 </div>
                                 <div className="ct_choice_bar">
                                     <div className="ct_choice_view">
-                                        <button className="viewpoint_button view_btn_simple">
+                                        <button onClick={()=>{this.pickTab('sixPicsTab')}}
+                                        className={`viewpoint_button ${this.state.activeTab === 'sixPicsTab' ? 'view_active_tab_btn' : ''}`}>
                                             <div className="viewpoint_btn_box">
                                                 <i class="fas fa-th-large viewbox_btn"></i>
                                             </div>
                                         </button>
-                                        <button className="viewpoint_button">
-                                            <div className="viewpoint_btn_box">
+                                        <button onClick={()=>{this.pickTab('fourPicsTab')}}
+                                        className={`viewpoint_button ${this.state.activeTab === 'fourPicsTab' ? 'view_active_tab_btn' : ''}`}>
+                                            <div className ="viewpoint_btn_box">
                                                 <i class="fas fa-th viewbox_btn"></i>
                                             </div>
                                         </button>
-                                        <button className="viewpoint_button">
+                                        <button onClick={()=>{this.pickTab('boardListTab')}}
+                                        className={`viewpoint_button ${this.state.activeTab === 'boardListTab' ? 'view_active_tab_btn' : ''}`}>
                                             <div className="viewpoint_btn_box">
                                                 <i class="fas fa-bars viewbox_btn"></i>
                                             </div>
@@ -100,93 +116,22 @@ class Mypage extends React.Component {
                         </div>                    
                         <div className="content_pic_container">
                             <div className="picture_frame_wrapper">
-                            <div className="picture_frame">
-                                    <div className="picture_outerframe">
-                                        <div className="picture_innerframe">
-                                            <div className="pic_item pic_first" > 
-                                            </div> 
-                                            <div className="pic_item pic_second">
-                                            </div>   
-                                            <div className="pic_item pic_third">
-                                            </div>
-                                            <div className="pic_item pic_forth">
-                                            </div>
-                                            <div className="pic_item pic_fifth">
-                                            </div>
-                                            <div className="pic_item pic_sixth">
-                                            </div>
-                                        </div>
-                                        <div className="pic_info_wrapper">
-                                           <div className="pic_info_container">
-                                                <div className="pic_boradname ">패션</div>
-                                                <div className="count_pin ">핀 6개</div>
-                                            </div>
-                                            <div className="editBox">
-                                                <div className="editBox_inner">
-                                                    <i class="fas fa-pen editBtn"></i>
-                                                </div>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="picture_frame">
-                                    <div className="picture_outerframe">
-                                        <div className="picture_innerframe">
-                                            <div className="pic_item pic_first" > 
-                                            </div> 
-                                            <div className="pic_item pic_second">
-                                            </div>   
-                                            <div className="pic_item pic_third">
-                                            </div>
-                                            <div className="pic_item pic_forth">
-                                            </div>
-                                            <div className="pic_item pic_fifth">
-                                            </div>
-                                            <div className="pic_item pic_sixth">
-                                            </div>
-                                        </div>
-                                        <div className="pic_info_wrapper">
-                                           <div className="pic_info_container">
-                                                <div className="pic_boradname ">패션</div>
-                                                <div className="count_pin ">핀 6개</div>
-                                            </div>
-                                            <div className="editBox">
-                                                <div className="editBox_inner">
-                                                    <i class="fas fa-pen editBtn"></i>
-                                                </div>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="picture_frame">
-                                    <div className="picture_outerframe">
-                                        <div className="picture_innerframe">
-                                            <div className="pic_item pic_first" > 
-                                            </div> 
-                                            <div className="pic_item pic_second">
-                                            </div>   
-                                            <div className="pic_item pic_third">
-                                            </div>
-                                            <div className="pic_item pic_forth">
-                                            </div>
-                                            <div className="pic_item pic_fifth">
-                                            </div>
-                                            <div className="pic_item pic_sixth">
-                                            </div>
-                                        </div>
-                                        <div className="pic_info_wrapper">
-                                           <div className="pic_info_container">
-                                                <div className="pic_boradname ">패션</div>
-                                                <div className="count_pin ">핀 6개</div>
-                                            </div>
-                                            <div className="editBox">
-                                                <div className="editBox_inner">
-                                                    <i class="fas fa-pen editBtn"></i>
-                                                </div>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            {this.state.activeTab === 'boardTab' && <Mypicframe /> }
+                            {this.state.activeTab === 'boardTab' && <Mypicframe /> }
+                            {this.state.activeTab === 'boardTab' && <Mypicframe /> }
+                            {this.state.activeTab === 'pinTab' && <PhotoBox />}
+                            {this.state.activeTab === 'pinTab' && <PhotoBox />}
+                            {this.state.activeTab === 'pinTab' && <PhotoBox />} 
+                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe />}
+                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe />}
+                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe />}
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
+                            {this.state.activeTab === 'boardListTab' && <Boadrlist /> } 
                             </div>
                         </div>
                     </div>

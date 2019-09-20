@@ -2,6 +2,7 @@
   margin-bottom: 2px;
   border-radius: 10px;
   cursor: pointer;
+
   &:hover {
     background-color: #efefef;
   }
@@ -49,6 +50,16 @@
         background-color: rgba(0, 0, 0, 0.4);
       }
     }
+    .imageBelow {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2px;
+
+      .dotdotdot {
+        font-size: 5px;
+        color: #8e8e8e;
+      }
+    }
     .pinButton {
       display: flex;
       align-items: center;
@@ -66,11 +77,11 @@
       }
 
       .fas {
-        font-size: 18px;
+        font-size: 16px;
         margin: 1px;
       }
       span {
-        font-size: 16px;
+        font-size: 14px;
         margin: 2px;
         font-weight: 700;
       }

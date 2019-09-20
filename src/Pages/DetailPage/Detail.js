@@ -1,23 +1,42 @@
 import React from "react";
-import "./Detail.scss";
 import DetailImg from "./DetailImg";
 import DetailComment from "./DetailComment";
+import PhotoBox from "Components/PhotoBox";
+import Data from "./DetailData";
+import data from "Components/PhotoBox/data";
+import "./Detail.scss";
+
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { commnet: true };
+    this.state = { activeTap: "imgBox", isDetailPage: [] };
   }
-  onchangeFuc = () => {
-    this.setState({ commnet: false });
+
+  showTap = e => {
+    this.setState({ activeTap: e });
   };
-  onchangeFuc2 = () => {
-    this.setState({ commnet: true });
+
+  pageBack = () => {
+    this.props.history.push("/");
   };
+  componentDidMount() {
+    // fetch("앤드포인트", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // })
+    //   .then(Response => Response.json)
+    //   .then(Response => {
+    //     this.setState(isDetailPage:Response);
+    //   });
+  }
+
   render() {
     return (
       <div className="detail_body">
         <div className="detail_wrap">
-          <div className="detail_back_button">
+          <div onClick={this.pageBack} className="detail_back_button">
             <i className="fas fa-arrow-left back"></i>
           </div>
           <div className="detail_main_page">
@@ -48,30 +67,31 @@ class Detail extends React.Component {
                     </div>
                   </div>
                   <div className="detail_main_page_top_save_2">
-                    <div className="hover">저장</div>저장
+                    <div className="hover"></div>저장
                   </div>
                 </div>
               </div>
             </div>
             <div className="detail_main_page_box_wrap">
-              <div className="detail_main_page_box_img">
-                <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                <div className="img_text_wrap">
-                  <div className="img_box">
-                    <i class="fas fa-location-arrow"></i>
-
-                    <div className="text">hififunk.tumblr.com</div>
+              <a href={Data.link}>
+                <div className="detail_main_page_box_img">
+                  <img src={Data.img}></img>
+                  <div className="img_text_wrap">
+                    <div className="img_box">
+                      <i class="fas fa-location-arrow"></i>
+                      {<div className="text">{Data.url}</div>}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
               <div className="detail_main_page_box_text">
                 <div className="detail_main_page_box_text_top1">
                   <div className="detail_main_page_box_text_top1_img">
-                    <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
+                    <img src={Data.idImg}></img>
                   </div>
                   <div className="detail_main_page_box_text_top1_text">
                     <div className="detail_main_page_box_text_top1_text1">
-                      <a>회원님</a> 님이 <a>아이폰배경</a>에 저장함
+                      <a>{Data.id}</a> 님이 <a>아이폰배경</a>에 저장함
                     </div>
                     <div className="detail_main_page_box_text_top1_text2">
                       여자 앉는 자세
@@ -86,88 +106,63 @@ class Detail extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="detail_main_page_moveButton">
-                  <div className="hover"></div>
-                  <div className="link_box">
-                    <div className="moveButton_img">
-                      <i class="fas fa-location-arrow"></i>
+                <a href={Data.link}>
+                  <div className="detail_main_page_moveButton">
+                    <div className="hover"></div>
+                    <div className="link_box">
+                      <div className="moveButton_img">
+                        <i class="fas fa-location-arrow"></i>
+                      </div>
+                      <div className="moveButton_text">{Data.url}</div>
                     </div>
-                    <div className="moveButton_text">hififunk.tumblr.com</div>
                   </div>
-                </div>
+                </a>
                 <div className="detail_main_page_box_text_top2">
                   <div className="detail_main_page_box_text_top2_title">
                     사진 및 댓글
                   </div>
                   <div className="detail_main_page_box_text_top2_title_button_wrap">
                     <div
-                      onClick={this.onchangeFuc2}
-                      className="detail_main_page_box_text_top2_title_button1"
+                      onClick={() => this.showTap("imgBox")}
+                      className={`detail_main_page_box_text_top2_title_button1 ${
+                        this.state.activeTap === "imgBox"
+                          ? "active_tab_button"
+                          : ""
+                      }`}
                     >
                       사진
                     </div>
                     <div
-                      onClick={this.onchangeFuc}
-                      className="detail_main_page_box_text_top2_title_button2"
+                      onClick={() => this.showTap("commentTap")}
+                      className={`detail_main_page_box_text_top2_title_button1 ${
+                        this.state.activeTap === "commentTap"
+                          ? "active_tab_button"
+                          : ""
+                      }`}
                     >
                       댓글
                     </div>
                   </div>
                   <div>
-                    {this.state.commnet === true ? (
-                      <DetailImg />
-                    ) : (
-                      <DetailComment />
-                    )}
-                    {/* <DetailComment /> */}
-                    {/* <div className="commnet_text">
-                      피드백을 공유하거나 질문을 하거나 칭찬을 남겨주세요
-                    </div>
-                    <div>코맨트 나오는곳</div>
-                    <div className="comment_box">
-                      <div className="commen_box_img">
-                        <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      </div>
-                      <input
-                        placeholder="댓글 추가"
-                        className="comment_box_input"
-                      ></input>
-                    </div> */}
-                    {/* <DetailImg /> */}
-                    {/* <div className="detail_main_page_box_text_top2_title_imgBox">
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                      <img src="https://images.velog.io/post-images/jingyong91/e98b65f0-d8e8-11e9-8420-5f04f6cc6a81/da342466ced6534b71fe1a0d7dd19e25.jpg"></img>
-                    </div>
-                    <div className="detail_main_page_commnet">
-                      <div className="commnet_text_wrap">
-                        <div className="commnet_text">
-                          이 핀을 시도해보셨나요?
-                        </div>
-                        <div className="commnet_text">
-                          사진을 추가하여 경험을 공유해주세요
-                        </div>
-                      </div>
-                      <div className="commnet_text_button">
-                        <div
-                          className="hover
-                      "
-                        ></div>
-                        사진 추가
-                      </div>
-                    </div> */}
+                    {this.state.activeTap === "imgBox" && <DetailImg />}
+                    {this.state.activeTap === "commentTap" && <DetailComment />}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="detail_wrap_exit ">
+          <div onClick={this.pageBack} className="detail_wrap_exit ">
             <i className="fas fa-times img"></i>
           </div>
         </div>
-        <div className="detail_similar_box">유사한 핀 더보기</div>
-        <div>이미지들어오는곳</div>
+        <div className="detail_similar_title">유사한 핀 더보기</div>
+        <div className="detail_similar_img_box">
+          <div className="detail_similar_img">
+            {data.map((el, i) => (
+              <PhotoBox info={el} key={i} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

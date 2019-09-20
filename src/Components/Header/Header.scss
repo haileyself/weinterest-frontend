@@ -28,10 +28,14 @@
       height: 40px;
       padding: 4px;
       border-radius: 100%;
+
+      // a:focus {
+      //   box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+      // }
     }
     .logo:hover {
       background-color: #efefef;
-      box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+      box-shadow: 0 0 0 4px #efefef;
     }
     .logo img {
       width: 85%;
@@ -43,8 +47,92 @@
     padding: 10px;
     border-radius: 8px;
     background-color: #efefef;
-    border: 1px none;
+    border: 2px none;
     display: flex;
+    position: relative;
+
+    // &.active_BorderFocus {
+    //   box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+    // }
+    .listToSearch {
+      display: none;
+      margin: 0 5px;
+      width: 98%;
+      left: 0;
+      bottom: -580px;
+      background-color: white;
+      position: absolute;
+      padding: 20px 40px 20px 10px;
+
+      .list_First {
+        display: flex;
+        margin-bottom: 10px;
+
+        div {
+          margin-right: 3px;
+          font-size: 15px;
+          font-weight: 600;
+          color: #8e8e8e;
+        }
+        i {
+          margin-left: 3px;
+          font-size: 18px;
+        }
+      }
+
+      .latestSearchList {
+        display: flex;
+
+        .result_Tag {
+          margin: 0 8px 0 0;
+          padding: 9px;
+          border: 1px none;
+          border-radius: 10px;
+          background-color: #efefef;
+          font-weight: 750;
+          font-size: 15px;
+          text-align: center;
+          letter-spacing: -1px;
+          color: #8e8e8e;
+        }
+      }
+      .list_Second {
+        margin-top: 10px;
+
+        .recommendIdea {
+          margin-bottom: 10px;
+          font-size: 15px;
+          font-weight: 600;
+          color: #8e8e8e;
+        }
+        .result_Idea,
+        .result_Idea2 {
+          max-width: 90%;
+          display: flex;
+          margin-bottom: 13px;
+
+          .will_Update {
+            width: 280px;
+            height: 120px;
+            margin-right: 10px;
+            border-radius: 8px;
+            background-image: url("sampleimage.png");
+            background-position: center;
+            background-size: cover;
+            position: relative;
+
+            p {
+              position: absolute;
+              bottom: 10px;
+              left: 8px;
+              color: white;
+              font-weight: bold;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
   }
   .fas {
     width: 20px;
@@ -59,9 +147,10 @@
     background-color: #efefef;
     margin: 0 10px;
     outline: none;
+
     // &:focus {
     //   box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
-    // }
+    //}
   }
   .theOthers {
     display: flex;
@@ -80,9 +169,10 @@
       font-size: 15px;
       font-weight: 600;
       color: #8e8e8e;
+
       &:hover {
         background-color: #efefef;
-        box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+        box-shadow: 0 0 0 2px #efefef;
         color: black;
         font-weight: 700;
         cursor: pointer;

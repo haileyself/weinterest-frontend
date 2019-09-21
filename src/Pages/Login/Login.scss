@@ -67,6 +67,15 @@
         margin-top: 35px;
         font-size: 16px;
         padding-left: 10px;
+
+        &.input_change {
+          border: 3px solid rgb(250, 133, 133);
+        }
+      }
+      .different {
+        color: red;
+        width: 285px;
+        font-size: 13px;
       }
       .Login_input2 {
         border: 1px solid #b3b2b2;
@@ -88,7 +97,7 @@
       .login_button {
         border-radius: 5px;
         border: 1px solid #e60023;
-        width: 270px;
+        width: 280px;
         height: 40px;
         margin-top: 23px;
         background-color: #e60023;
@@ -105,7 +114,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 5px;
-      width: 270px;
+      width: 280px;
       height: 40px;
       font-size: 12px;
       font-weight: 700;
@@ -113,14 +122,14 @@
     }
     .login_fB {
       border: 1px solid black;
-      width: 270px;
+      width: 280px;
       height: 40px;
       border-radius: 5px;
       overflow: hidden;
     }
     .login_Gg {
       border: 1px solid black;
-      width: 270px;
+      width: 280px;
       height: 40px;
       border-radius: 5px;
       overflow: hidden;

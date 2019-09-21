@@ -17,7 +17,6 @@ class Mypage extends React.Component {
     }
     
     render () {
-    // console.log(this.state.activeTab);
     return (
         <div className="mypage">
             <div className="mypage_wrapper">
@@ -25,10 +24,10 @@ class Mypage extends React.Component {
                         <div className="subheader">
                             <div className="btn_wrapper">
                                 <button className="subhed_btn">
-                                    <i class="fas fa-plus sub_btn"></i>
+                                    <i className="fas fa-plus sub_btn"></i>
                                 </button>
                                 <button className="subhed_btn">
-                                    <i class="fas fa-pen sub_btn"></i>
+                                    <i className="fas fa-pen sub_btn"></i>
                                 </button>
                                 <button className="subhed_btn">
                                     <i className="fas fa-upload sub_btn"></i>
@@ -86,19 +85,19 @@ class Mypage extends React.Component {
                                         <button onClick={()=>{this.pickTab('sixPicsTab')}}
                                         className={`viewpoint_button ${this.state.activeTab === 'sixPicsTab' ? 'view_active_tab_btn' : ''}`}>
                                             <div className="viewpoint_btn_box">
-                                                <i class="fas fa-th-large viewbox_btn"></i>
+                                                <i className="fas fa-th-large viewbox_btn"></i>
                                             </div>
                                         </button>
                                         <button onClick={()=>{this.pickTab('fourPicsTab')}}
                                         className={`viewpoint_button ${this.state.activeTab === 'fourPicsTab' ? 'view_active_tab_btn' : ''}`}>
                                             <div className ="viewpoint_btn_box">
-                                                <i class="fas fa-th viewbox_btn"></i>
+                                                <i className="fas fa-th viewbox_btn"></i>
                                             </div>
                                         </button>
                                         <button onClick={()=>{this.pickTab('boardListTab')}}
                                         className={`viewpoint_button ${this.state.activeTab === 'boardListTab' ? 'view_active_tab_btn' : ''}`}>
                                             <div className="viewpoint_btn_box">
-                                                <i class="fas fa-bars viewbox_btn"></i>
+                                                <i className="fas fa-bars viewbox_btn"></i>
                                             </div>
                                         </button>            
                                     </div>
@@ -139,10 +138,10 @@ class Mypage extends React.Component {
                 <div className="mypage_footer_wrapper">
                     <div className="mypage_footerbtn_wrapper">
                             <button className="footerBtnBox">
-                                <i class="fas fa-plus footer_btn"></i>
+                                <i className="fas fa-plus footer_btn"></i>
                             </button >
                             <button className="footerBtnBox">
-                                <i class="fas fa-question footer_btn"></i>
+                                <i className="fas fa-question footer_btn"></i>
                             </button>
                     </div>
                 </div>

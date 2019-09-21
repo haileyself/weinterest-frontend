@@ -19,7 +19,7 @@ class Fourpics extends React.Component {
                     </div>
                     <div className="view_editBox">
                         <div className="view_editBox_inner">
-                            <i class="fas fa-pen view_editBtn"></i>
+                            <i className="fas fa-pen view_editBtn"></i>
                         </div>   
                     </div>
                 </div> 

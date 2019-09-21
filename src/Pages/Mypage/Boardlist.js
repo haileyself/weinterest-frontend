@@ -21,7 +21,7 @@ class Boadrlist extends React.Component {
                                                     <div className="boardlist_createdAt">2019년 9월 20일</div>
                                                     <div className="board_editBox">
                                                         <div className="board_editBox_inner">
-                                                            <i class="fas fa-pen board_editBtn"></i>
+                                                            <i className="fas fa-pen board_editBtn"></i>
                                                         </div> 
                                                     </div>       
                                                 </div>
@@ -40,7 +40,7 @@ class Boadrlist extends React.Component {
                                                     <div className="boardlist_createdAt">2019년 9월 20일</div>
                                                     <div className="board_editBox">
                                                         <div className="board_editBox_inner">
-                                                            <i class="fas fa-pen board_editBtn"></i>
+                                                            <i className="fas fa-pen board_editBtn"></i>
                                                         </div> 
                                                     </div>       
                                                 </div>

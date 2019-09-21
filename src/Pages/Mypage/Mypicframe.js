@@ -27,7 +27,7 @@ class Mypicframe extends React.Component {
                         </div>
                         <div className="editBox">
                             <div className="editBox_inner">
-                                <i class="fas fa-pen editBtn"></i>
+                                <i className="fas fa-pen editBtn"></i>
                             </div>   
                         </div>
                     </div>

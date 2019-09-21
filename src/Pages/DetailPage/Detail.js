@@ -4,16 +4,24 @@ import DetailComment from "./DetailComment";
 import PhotoBox from "Components/PhotoBox";
 import Data from "./DetailData";
 import data from "Components/PhotoBox/data";
+import DetailSaveBox from "./DetailSaveBox";
 import "./Detail.scss";
 
 class Detail extends React.Component {
   constructor() {
     super();
-    this.state = { activeTap: "imgBox", isDetailPage: [] };
+    this.state = {
+      activeTap: "imgBox",
+      changeSend: "",
+      isDetailPage: []
+    };
   }
 
   showTap = e => {
     this.setState({ activeTap: e });
+  };
+  sendBoxchangeImg = e => {
+    this.setState({ changeSend: e });
   };
 
   pageBack = () => {
@@ -48,7 +56,6 @@ class Detail extends React.Component {
                   </div>
                 </div>
                 <div className="detail_main_page_top_send">
-                  <div className="hover"></div>
                   <div className="detail_main_page_top_send_wrap">
                     <div className="detail_main_page_top_send_img_wrap">
                       <i className="fas fa-upload"></i>
@@ -56,9 +63,39 @@ class Detail extends React.Component {
                     <div className="detail_main_page_top_send_text">보내기</div>
                   </div>
                 </div>
-                <div className="detail_main_page_top_save">
+                <div
+                  onClick={() => this.sendBoxchangeImg("change")}
+                  className={`detail_main_page_top_save_wrap`}
+                >
+                  {this.state.changeSend === "change" && (
+                    <div className="changeImg">
+                      <div className="changeBox">
+                        <div className="serch_wrap">
+                          <div className="serch_box">
+                            <i class="fas fa-search"></i>
+                          </div>
+                          <input placeholder="검색" className="serch_input" />
+                        </div>
+                        <div className="changeImg_title">최고 보드 제안</div>
+                        {/* {data.map((el, i) => (
+                          <DetailSaveBox
+                            img={data[10].thumbnail}
+                            text={data.text}
+                            key={i}
+                          />
+                        ))} */}
+
+                        <DetailSaveBox img={Data.img} text={Data.text} />
+                      </div>
+                      <div className="changeImg_1">
+                        <div className="changeImg_1_1">아이폰 배경</div>
+                        <div className="detail_main_page_top_save_1_img">
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <div className="detail_main_page_top_save_1">
-                    <div className="hover"></div>
                     <div className="detail_main_page_top_save_1_text">
                       아이폰 배경
                     </div>
@@ -108,7 +145,6 @@ class Detail extends React.Component {
                 </div>
                 <a href={Data.link}>
                   <div className="detail_main_page_moveButton">
-                    <div className="hover"></div>
                     <div className="link_box">
                       <div className="moveButton_img">
                         <i class="fas fa-location-arrow"></i>

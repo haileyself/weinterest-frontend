@@ -7,36 +7,43 @@ class Login extends React.Component {
     super();
     this.state = { valueId: "", valuePw: "" };
   }
-  valueCheck = () => {
-    if (this.state.valueId === "") {
-      this.setState({ valueId: "change" });
-    }
-  };
+
   inputValueId = e => {
     this.setState({ valueId: e.target.value });
   };
+  inputValuePw = e => {
+    this.setState({ valuePW: e.target.value });
+  };
+
   signupMove = () => {
     this.props.history.push("signup");
   };
+  // componentDidMount() {
+  // window.Kakao.init("501b12a114e66a388faa69d1b9120796");
+  // }
+
   onClickLogin = () => {
-    // fetch("http://localhost:8000/users/login", {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     body: JSON.stringfy({
-    //       email: this.state.valueId,
-    //       password: this.state.valuePw
-    //     })
-    //   }
-    // })
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     if (response.access_token) {
-    //       localStorage.setItem("이건정하자", response.access_token);
-    //       this.props.history.push("/");
-    //     }
-    //   });
+    fetch("http://localhost:8000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        body: JSON.stringify({
+          email: this.state.valueId,
+          password: this.state.valuePw
+        })
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.access_token) {
+          // localStorage.setItem("이건정하자", response.access_token);
+          this.props.history.push("/");
+        }
+      });
     if (this.state.valueId === "") {
       this.setState({ valueId: "change" });
+    } else if (this.state.valuePw === "") {
+      this.setState({ valuePw: "change2" });
     }
   };
   render() {
@@ -66,8 +73,23 @@ class Login extends React.Component {
                   놓친 부분이 있네요! 이메일을 추가하세요
                 </div>
               )}
-              <div className="red_border"></div>
-              <input className="Login_input2" placeholder="비밀번호"></input>
+              {/* <div className="red_border"></div> */}
+              <input
+                onChange={this.inputValuePw}
+                className={`Login_input2 ${
+                  this.state.valuePw === "change2" ? "input_change" : ""
+                }`}
+                placeholder="비밀번호"
+              ></input>
+              {/*  ========================================== */}
+              {this.state.valuePw === "change2" && (
+                <div className="different">
+                  올바르지 않은 비밀번호를 입력했습니다. 다시 시도하거나
+                  비밀번호 재설정하세요
+                </div>
+              )}
+              {/* <div className="red_border"></div> */}
+              {/*  ========================================== */}
               <div className="login_forget">비밀번호를 잃으셨나요?</div>
               <div onClick={this.onClickLogin} className="login_button">
                 로그인

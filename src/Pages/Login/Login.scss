@@ -56,6 +56,7 @@
       .Login_title {
         height: 45px;
         margin-top: 20px;
+        margin-bottom: 35px;
         font-size: 32px;
         font-weight: 700;
       }
@@ -64,14 +65,14 @@
         border-radius: 5px;
         width: 270px;
         height: 40px;
-        margin-top: 35px;
+        // margin-bottom: 15px;
         font-size: 16px;
         padding-left: 10px;
-
         &.input_change {
           border: 3px solid rgb(250, 133, 133);
         }
       }
+
       .different {
         color: red;
         width: 285px;
@@ -85,12 +86,14 @@
         margin-top: 10px;
         font-size: 16px;
         padding-left: 10px;
+        &.input_change {
+          border: 3px solid rgb(250, 133, 133);
+        }
       }
       .login_forget {
         width: 280px;
         font-size: 12px;
         font-weight: 700;
-        margin-top: 5px;
         color: #717171;
         cursor: pointer;
       }
@@ -106,6 +109,7 @@
         cursor: pointer;
       }
     }
+
     .login_button:hover {
       background-color: rgba(193, 44, 44, 1);
     }

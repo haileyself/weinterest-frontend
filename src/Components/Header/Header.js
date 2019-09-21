@@ -1,19 +1,9 @@
 import React, { Component } from "react";
+import HeaderCompo from "./HeaderCompo";
 import Logo from "Images/Logo.png";
 import "./Header.scss";
-import HeaderCompo from "./HeaderCompo";
 
 class Header extends Component {
-  constructor() {
-    super();
-
-    this.state = { searchEngine: "unclick" };
-  }
-
-  showMeList = e => {
-    this.setState({ searchEngine: "click" });
-  };
-
   render() {
     return (
       <div className="headerContainer">
@@ -25,21 +15,11 @@ class Header extends Component {
               </div>
             </a>
           </div>
-          <div
-            className={`headerSearch ${
-              this.state.searchEngine === "click"
-                ? "listToSearch "
-                : "headerSearch"
-            }`}
-          >
-            <i className="fas fa-search small_search_Icon" />
-            <input
-              type="email"
-              className="searchsearch"
-              placeholder="검색"
-              onClick={this.showMeList}
-            />
+          <div className="headerSearch">
+            <input type="email" className="searchsearch" placeholder="검색" />
+            <i className="fas fa-search small_search_Icon search_icon" />
             <HeaderCompo />
+            <div className="compoBg"></div>
           </div>
           <div className="theOthers">
             <a href="/">

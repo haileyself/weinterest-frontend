@@ -162,9 +162,9 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-​ input,
+
+​input,
 select {
-  vertical-align: middle;
 }
 ​ textarea {
   resize: none;
@@ -191,4 +191,7 @@ a {
 
 div {
   box-sizing: border-box;
+}
+input {
+  border: 0;
 }

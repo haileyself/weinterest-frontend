@@ -3,6 +3,7 @@ import "./PhotoBox.scss";
 
 const PhotoBox = ({ info = {} }) => {
   const { thumbnail } = info;
+
   return (
     <div className="photoCompo">
       <figure>

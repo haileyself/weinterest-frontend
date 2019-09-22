@@ -6,6 +6,9 @@ import Header from "Components/Header/Header";
 import Detail from "Pages/DetailPage";
 import Login from "Pages/Login";
 import Signup from "Pages/Signup";
+import SignupFirst from "Pages/Signup/SignupFirst";
+import SignupSecond from "Pages/Signup/SignupSecond";
+import SignupFinal from "Pages/Signup/SignupFinal";
 
 class Routes extends React.Component {
   render() {
@@ -18,6 +21,9 @@ class Routes extends React.Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signupfirst" component={SignupFirst} />
+          <Route exact path="/signupsecond" component={SignupSecond} />
+          <Route exact path="/signupfinal" component={SignupFinal} />
         </Switch>
       </Router>
     );

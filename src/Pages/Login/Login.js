@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../Images/Logo.png";
 import "./Login.scss";
-
+// window.Kakao.init("501b12a114e66a388faa69d1b9120796");
 class Login extends React.Component {
   constructor() {
     super();
@@ -21,7 +21,15 @@ class Login extends React.Component {
     this.props.history.push("signup");
   };
   // componentDidMount() {
-  // window.Kakao.init("501b12a114e66a388faa69d1b9120796");
+  //   window.Kakao.Auth.createLoginButton({
+  //     container: "#kakao-login-btn",
+  //     success: function(authObj) {
+  //       alert(JSON.stringify(authObj));
+  //     },
+  //     fail: function(err) {
+  //       alert(JSON.stringify(err));
+  //     }
+  //   });
   // }
 
   onClickLogin = () => {
@@ -40,7 +48,7 @@ class Login extends React.Component {
       .then(response => {
         console.log("확인", response);
         if (response.access_token) {
-          localStorage.setItem("이건정하자", response.access_token);
+          // localStorage.setItem("이건정하자", response.access_token);
           this.props.history.push("/");
         }
       });
@@ -100,8 +108,16 @@ class Login extends React.Component {
                 로그인
               </div>
               <div className="login_or">또는</div>
-              <div className="login_Ka">Kakao Talk으로 계속하기</div>
-              <div className="login_Gg"></div>
+              <div className="login_Ka">
+                <i className="fas fa-comment"></i>
+                카카오톡으로 시작하기
+              </div>
+              <div className="login_Gg">
+                <div className="button_wrap">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+                페이스북으로 시작하기
+              </div>
               <div className="login_contract">
                 계속하면 Pinterest <a>서비스 약관 </a>및
                 <a> 개인정보 보호정책</a>에 동의하는 것으로 간주됩니다.

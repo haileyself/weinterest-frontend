@@ -8,7 +8,7 @@ class HeaderCompo extends Component {
         <div className="listToSearch">
           <div className="list_First">
             <div>최근 검색 기록</div>
-            <i class="fas fa-times-circle"></i>
+            <i className="fas fa-times-circle"></i>
           </div>
           <div className="latestSearchList">
             <div className="result_Tag">로그인 ui </div>

@@ -6,6 +6,7 @@ import Data from "./DetailData";
 import data from "Components/PhotoBox/data";
 import DetailSaveBox from "./DetailSaveBox";
 import miniData from "./DatailDb";
+
 import "./Detail.scss";
 
 class Detail extends React.Component {
@@ -29,9 +30,9 @@ class Detail extends React.Component {
     }));
   };
   handleClick2 = () => {
-    this.setState(item => ({
-      download: !item.download
-    }));
+    this.setState({
+      download: !this.state.download
+    });
   };
 
   pageBack = () => {

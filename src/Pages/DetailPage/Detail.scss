@@ -592,10 +592,116 @@
       }
     }
     .commnet_text {
-      font-weight: 400;
       font-size: 15px;
       color: #333333;
       margin-top: 20px;
+      padding-bottom: 15px;
+    }
+    .comment_img_wrap {
+      display: flex;
+      width: 345px;
+      margin-right: 10px;
+      @media (max-width: 1080px) {
+        width: 515px;
+      }
+      .comment_user_img {
+        width: 45px;
+
+        .user_img {
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .commet_input_wrap {
+        border: 1px solid #8e8e8e;
+        border-radius: 10px;
+        width: 300px;
+        margin-left: 5px;
+        @media (max-width: 1080px) {
+          width: 455px;
+        }
+        .comment_user_name_wrap {
+          display: flex;
+          padding: 5px;
+          .comment_user_name {
+            font-size: 13px;
+            font-weight: 700;
+          }
+          .comment_history {
+            font-size: 13px;
+            color: #8e8e8e;
+            margin-left: 5px;
+          }
+        }
+        .user_comment {
+          font-size: 13px;
+          padding: 5px;
+          word-break: break-all;
+        }
+      }
+    }
+    .comment_icon_wrap {
+      display: flex;
+      height: 30px;
+      margin-top: 5px;
+      .icon1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        margin-left: 55px;
+        color: #8e8e8e;
+        cursor: pointer;
+      }
+      .icon1:hover {
+        border-radius: 50%;
+        background-color: rgba(12, 9, 9, 0.1);
+      }
+      .icon2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        margin-left: 10px;
+        color: #8e8e8e;
+        cursor: pointer;
+      }
+      .icon2:hover {
+        border-radius: 50%;
+        background-color: rgba(12, 9, 9, 0.1);
+      }
+      .icon3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        margin-left: 10px;
+        color: #8e8e8e;
+        cursor: pointer;
+      }
+      .icon3:hover {
+        border-radius: 50%;
+        background-color: rgba(12, 9, 9, 0.1);
+      }
+    }
+    .like {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 13px;
+      color: #8e8e8e;
+      font-weight: 700;
+      margin-left: 115px;
+      cursor: pointer;
+      @media (max-width: 1080px) {
+        margin-left: 270px;
+      }
     }
     .comment_box {
       display: flex;

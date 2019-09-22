@@ -604,6 +604,9 @@
       margin-top: 30px;
       margin-bottom: 10px;
       cursor: pointer;
+      @media (max-width: 1080px) {
+        width: 500px;
+      }
       .commen_box_img {
         border-radius: 50%;
         width: 45px;
@@ -622,6 +625,9 @@
       border: 1px solid #dcdcdc;
       width: 290px;
       font-size: 16px;
+      @media (max-width: 1080px) {
+        width: 500px;
+      }
     }
     .comment_button_wrap {
       display: flex;
@@ -629,6 +635,10 @@
       width: 345px;
       margin-top: 15px;
       margin-bottom: 10px;
+      @media (max-width: 1080px) {
+        width: 500px;
+      }
+
       .comment_button {
         display: flex;
         justify-content: center;

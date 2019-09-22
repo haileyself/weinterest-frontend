@@ -8,7 +8,7 @@ const PhotoBox = ({ info = {} }) => {
       <figure>
         <div className="xoxoxo">
           <div className="pinButton">
-            <i class="fas fa-thumbtack x"></i>
+            <i className="fas fa-thumbtack x"></i>
             <span>저장</span>
           </div>
           <a href="/">
@@ -18,7 +18,7 @@ const PhotoBox = ({ info = {} }) => {
         </div>
         <div className="imageBelow">
           <p>추천 핀</p>
-          <i class="fas fa-ellipsis-h dotdotdot"></i>
+          <i className="fas fa-ellipsis-h dotdotdot"></i>
         </div>{" "}
       </figure>
     </div>

@@ -5,6 +5,7 @@ import PhotoBox from "Components/PhotoBox";
 import Data from "./DetailData";
 import data from "Components/PhotoBox/data";
 import DetailSaveBox from "./DetailSaveBox";
+import miniData from "./DatailDb";
 import "./Detail.scss";
 
 class Detail extends React.Component {
@@ -13,6 +14,7 @@ class Detail extends React.Component {
     this.state = {
       activeTap: "imgBox",
       changeSend: "",
+      download: "",
       isDetailPage: []
     };
   }
@@ -20,13 +22,22 @@ class Detail extends React.Component {
   showTap = e => {
     this.setState({ activeTap: e });
   };
-  sendBoxchangeImg = e => {
-    this.setState({ changeSend: e });
+
+  handleClick = () => {
+    this.setState(item => ({
+      changeSend: !item.changeSend
+    }));
+  };
+  handleClick2 = () => {
+    this.setState(item => ({
+      download: !item.download
+    }));
   };
 
   pageBack = () => {
     this.props.history.push("/");
   };
+
   componentDidMount() {
     // fetch("앤드포인트", {
     //   method: "GET",
@@ -51,7 +62,19 @@ class Detail extends React.Component {
             <div className="detail_main_page_top">
               <div className="detail_main_page_top_detail_wrap">
                 <div className="detail_main_page_top_bar_wrap">
-                  <div className="detail_main_page_top_bar">
+                  {this.state.download ? (
+                    <div className="downImg">
+                      <div className="downImg_text1">이미지 다운로드</div>
+                      <div className="downImg_text2">핀 신고</div>
+                      <div className="downImg_text3">삽입</div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  <div
+                    onClick={this.handleClick2}
+                    className="detail_main_page_top_bar"
+                  >
                     <i className="fas fa-ellipsis-h dotdot"></i>
                   </div>
                 </div>
@@ -64,10 +87,10 @@ class Detail extends React.Component {
                   </div>
                 </div>
                 <div
-                  onClick={() => this.sendBoxchangeImg("change")}
+                  onClick={this.handleClick}
                   className={`detail_main_page_top_save_wrap`}
                 >
-                  {this.state.changeSend === "change" && (
+                  {this.state.changeSend ? (
                     <div className="changeImg">
                       <div className="changeBox">
                         <div className="serch_wrap">
@@ -77,15 +100,9 @@ class Detail extends React.Component {
                           <input placeholder="검색" className="serch_input" />
                         </div>
                         <div className="changeImg_title">최고 보드 제안</div>
-                        {/* {data.map((el, i) => (
-                          <DetailSaveBox
-                            img={data[10].thumbnail}
-                            text={data.text}
-                            key={i}
-                          />
-                        ))} */}
-
-                        <DetailSaveBox img={Data.img} text={Data.text} />
+                        {miniData.map((el, i) => (
+                          <DetailSaveBox img={el.img} text={el.text} key={i} />
+                        ))}
                       </div>
                       <div className="changeImg_1">
                         <div className="changeImg_1_1">아이폰 배경</div>
@@ -94,6 +111,8 @@ class Detail extends React.Component {
                         </div>
                       </div>
                     </div>
+                  ) : (
+                    ""
                   )}
                   <div className="detail_main_page_top_save_1">
                     <div className="detail_main_page_top_save_1_text">

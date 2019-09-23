@@ -1,11 +1,11 @@
 import React from "react";
 import logo from "../../Images/Logo.png";
 import "./Login.scss";
-// window.Kakao.init("501b12a114e66a388faa69d1b9120796");
+window.Kakao.init("501b12a114e66a388faa69d1b9120796");
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { valueId: "", valuePW: "" };
+    this.state = { valueId: "", valuePW: "", Kakao: {} };
   }
 
   inputValueId = e => {
@@ -20,20 +20,23 @@ class Login extends React.Component {
   signupMove = () => {
     this.props.history.push("signup");
   };
-  // componentDidMount() {
-  //   window.Kakao.Auth.createLoginButton({
-  //     container: "#kakao-login-btn",
-  //     success: function(authObj) {
-  //       alert(JSON.stringify(authObj));
-  //     },
-  //     fail: function(err) {
-  //       alert(JSON.stringify(err));
-  //     }
-  //   });
-  // }
+  componentDidMount() {
+    window.Kakao.Auth.createLoginButton({
+      container: "#kakao_login_btn",
+      success(authObj) {
+        alert(JSON.stringify(authObj));
+        // console.log(authObj);
+      },
+      fail(err) {
+        alert(JSON.stringify(err));
+      }
+    });
+    this.setState({
+      Kakao: window.Kakao
+    });
+  }
 
   onClickLogin = () => {
-    // debugger;
     fetch("http://10.58.6.27:8080/users/login", {
       method: "POST",
       headers: {
@@ -48,7 +51,7 @@ class Login extends React.Component {
       .then(response => {
         console.log("확인", response);
         if (response.access_token) {
-          // localStorage.setItem("이건정하자", response.access_token);
+          localStorage.setItem("이건정하자", response.access_token);
           this.props.history.push("/");
         }
       });
@@ -58,6 +61,23 @@ class Login extends React.Component {
       this.setState({ valuePW: "change2" });
     }
   };
+  onClickHandleKakaoLogin = () => {
+    this.state.Kakao.Auth.login({
+      success: kakaotoken => {
+        console.log(kakaotoken);
+        fetch("http://10.58.7.15:8000/users/users/kakao-login", {
+          headers: {
+            Authorization: kakaotoken.access_token
+          }
+        })
+          .then(response => response.json())
+          .then(response => {
+            console.log(response);
+          });
+      }
+    });
+  };
+
   render() {
     // console.log("확인", response);
     return (
@@ -86,7 +106,6 @@ class Login extends React.Component {
                   놓친 부분이 있네요! 이메일을 추가하세요
                 </div>
               )}
-              {/* <div className="red_border"></div> */}
               <input
                 onChange={this.inputValuePW}
                 className={`Login_input2 ${
@@ -94,34 +113,36 @@ class Login extends React.Component {
                 }`}
                 placeholder="비밀번호"
               ></input>
-              {/*  ========================================== */}
               {this.state.valuePW === "change2" && (
                 <div className="different">
                   올바르지 않은 비밀번호를 입력했습니다. 다시 시도하거나
                   비밀번호 재설정하세요
                 </div>
               )}
-              {/* <div className="red_border"></div> */}
-              {/*  ========================================== */}
               <div className="login_forget">비밀번호를 잊으셨나요?</div>
               <div onClick={this.onClickLogin} className="login_button">
                 로그인
               </div>
               <div className="login_or">또는</div>
               <div className="login_Ka">
-                <i className="fas fa-comment"></i>
-                카카오톡으로 시작하기
+                <div
+                  id="kakao_login_btn"
+                  onClick={this.onClickHandleKakaoLogin}
+                />
+
+                {/* <i className="fas fa-comment"></i> */}
+                {/* 카카오톡으로 시작하기 */}
               </div>
-              <div className="login_Gg">
+              <div className="login_FB">
                 <div className="button_wrap">
                   <i class="fab fa-facebook-f"></i>
                 </div>
-                페이스북으로 시작하기
+                페이스북계정으로 로그인
               </div>
               <div className="login_contract">
                 계속하면 Pinterest <a>서비스 약관 </a>및
                 <a> 개인정보 보호정책</a>에 동의하는 것으로 간주됩니다.
-              </div>
+              </div>{" "}
             </div>
           </div>
         </div>

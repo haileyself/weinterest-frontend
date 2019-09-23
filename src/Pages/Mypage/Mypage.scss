@@ -27,6 +27,7 @@
     max-width: 800px;
     width: 100%;
     height: 48px;
+    position: relative;
   }
 
   .subhed_btn {
@@ -35,6 +36,10 @@
     margin-left: 2px;
     padding: 10px 5px;
     border-radius: 50px;
+    &.active_tab_addbtn {
+      box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+      background-color: #efefef;
+    }
   }
 
   .subhed_btn:hover {
@@ -48,6 +53,31 @@
     text-align: center;
     font-weight: 580;
     border-radius: 50px;
+  }
+
+  .createList {
+    position: absolute;
+    top: 70px;
+    left: -92px;
+    width: 230px;
+    height: 96px;
+    background-color: #ffff;
+    border: 1px solid #efefef;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+
+    .addBoardList,
+    .addPinList {
+      width: 100%;
+      height: 48px;
+      padding: 8px 16px;
+      font-size: 16px;
+      color: #333333;
+      font-weight: bold;
+      &:hover {
+        background-color: #efefef;
+      }
+    }
   }
   .content_wrapper {
     top: 75px;
@@ -281,8 +311,9 @@
     left: 0px;
     width: 98.6667px;
     height: 99px;
-    background-image: url("https://i.pinimg.com/170x/57/6a/b8/576ab8609de8543c31a3a0bde8ac3d32.jpg");
+    // background-image: url("https://i.pinimg.com/170x/57/6a/b8/576ab8609de8543c31a3a0bde8ac3d32.jpg");
     border-top-left-radius: 12px;
+    background-size: cover;
   }
 
   .pic_second {
@@ -291,6 +322,7 @@
     width: 98.6667px;
     height: 99px;
     background-image: url("https://i.pinimg.com/170x/ff/02/27/ff02271dece2d38f23b52e2470e82ecd.jpg");
+    background-size: cover;
   }
 
   .pic_third {
@@ -300,6 +332,7 @@
     height: 149.5px;
     background-image: url("https://i.pinimg.com/170x/ff/02/27/ff02271dece2d38f23b52e2470e82ecd.jpg");
     border-top-right-radius: 12px;
+    background-size: cover;
   }
 
   .pic_forth {
@@ -309,6 +342,7 @@
     height: 99px;
     background-image: url("https://i.pinimg.com/170x/e6/cc/b3/e6ccb3a4f1eb09461d19208d5535751e.jpg");
     border-bottom-left-radius: 12px;
+    background-size: cover;
   }
 
   .pic_fifth {
@@ -317,6 +351,7 @@
     width: 98.6667px;
     height: 99px;
     background-image: url("https://i.pinimg.com/170x/ca/c0/03/cac0035a4d95ab809bf0857e282df39f.jpg");
+    background-size: cover;
   }
 
   .pic_sixth {
@@ -326,6 +361,7 @@
     height: 48.5px;
     background-image: url("https://i.pinimg.com/170x/57/6a/b8/576ab8609de8543c31a3a0bde8ac3d32.jpg");
     border-bottom-right-radius: 12px;
+    background-size: cover;
   }
 
   .pic_info_wrapper {
@@ -653,6 +689,59 @@
       text-align: center;
       color: #8e8e8e;
       font-weight: 600;
+    }
+  }
+
+  .pinlist_wrapper {
+    width: 100%;
+    max-width: 1250px;
+    column-width: 248px;
+    column-gap: 2px;
+  }
+
+  .createPin {
+    width: 248px;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+    padding: 8px;
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+
+    &:hover {
+      background-color: #efefef;
+    }
+
+    &:hover .picAdd_wrapper {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .picAdd_wrapper {
+      height: 236px;
+      border-radius: 10px;
+      background-color: #efefef;
+    }
+
+    .pinAddBtn_box {
+      background-color: #e60023;
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+      position: absolute;
+      top: 35%;
+      left: 42%;
+    }
+    .pinAddBtn {
+      color: #fff;
+      padding: 6px 7px 5px 9px;
+      font-size: 25px;
+    }
+
+    .makePin {
+      padding: 8px;
+      color: #8e8e8e;
+      font-size: 18px;
+      font-weight: bold;
     }
   }
 }

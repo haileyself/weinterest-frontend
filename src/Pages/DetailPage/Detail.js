@@ -30,9 +30,9 @@ class Detail extends React.Component {
     }));
   };
   handleClick2 = () => {
-    this.setState({
-      download: !this.state.download
-    });
+    this.setState(item => ({
+      download: !item.download
+    }));
   };
 
   pageBack = () => {
@@ -159,7 +159,7 @@ class Detail extends React.Component {
                       <i className="fas fa-thumbtack img"></i>
                     </div>
                     <div className="detail_main_page_box_text_top1_pin_nember">
-                      9,820
+                      820
                     </div>
                   </div>
                 </div>

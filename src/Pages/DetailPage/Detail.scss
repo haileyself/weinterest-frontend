@@ -354,6 +354,9 @@
             height: 100%;
             border-radius: 15px;
             opacity: 0;
+            @media (max-width: 1080px) {
+              width: 93%;
+            }
 
             .img_box {
               width: 225px;
@@ -437,12 +440,13 @@
 
               .detail_main_page_box_text_top1_text1 {
                 width: 230px;
-                font-size: 16px;
+                font-size: 15px;
                 color: #333333;
 
                 a {
                   font-weight: 700;
                   color: #333333;
+                  cursor: pointer;
                 }
               }
               .detail_main_page_box_text_top1_text2 {
@@ -454,6 +458,7 @@
             .detail_main_page_box_text_top1_pin {
               display: flex;
               width: 60px;
+              margin-right: -10px;
               .detail_main_page_box_text_top1_pin_img {
                 display: flex;
                 justify-content: center;
@@ -490,7 +495,6 @@
           .detail_main_page_box_text_top2_title_button_wrap {
             display: flex;
             margin-top: 20px;
-
             .detail_main_page_box_text_top2_title_button1 {
               border-radius: 30px;
 

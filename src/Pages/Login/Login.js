@@ -1,11 +1,12 @@
 import React from "react";
 import logo from "../../Images/Logo.png";
+import GoogleLogin from 'react-google-login';
 import "./Login.scss";
 window.Kakao.init("501b12a114e66a388faa69d1b9120796");
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { valueId: "", valuePW: "", Kakao: {} };
+    this.state = { valueId: "", valuePW: "", Kakao: {},googleID:"",googleName:"",provider:"" };
   }
 
   inputValueId = e => {
@@ -34,6 +35,7 @@ class Login extends React.Component {
     this.setState({
       Kakao: window.Kakao
     });
+    console.log(this.state.Kakao);
   }
 
   onClickLogin = () => {
@@ -51,7 +53,7 @@ class Login extends React.Component {
       .then(response => {
         console.log("확인", response);
         if (response.access_token) {
-          localStorage.setItem("이건정하자", response.access_token);
+          localStorage.setItem("일반로그인 토큰", response.access_token);
           this.props.history.push("/");
         }
       });
@@ -62,8 +64,11 @@ class Login extends React.Component {
     }
   };
   onClickHandleKakaoLogin = () => {
+    console.log(this.state.Kakao);
+    console.log("클릭");
     this.state.Kakao.Auth.login({
       success: kakaotoken => {
+        console.log("2클릭");
         console.log(kakaotoken);
         fetch("http://10.58.7.15:8000/users/users/kakao-login", {
           headers: {
@@ -72,15 +77,33 @@ class Login extends React.Component {
         })
           .then(response => response.json())
           .then(response => {
-            console.log(response);
+            // console.log(response);
+            localStorage.setItem("카카오 토큰", response.access_token);
           });
       }
     });
   };
+  
 
   render() {
-    // console.log("확인", response);
-    return (
+    const responseGoogle = (response) => {
+    console.log("구글?",response);fetch("http://10.58.7.15:8000/users/users/kakao-login", {
+      headers: {
+        Authorization: response.access_token
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        // console.log(response);
+        localStorage.setItem("카카오 토큰", response.access_token);
+      });
+    // this.setState({
+    //   googleID:response.googleID,
+    //   googleName:response.profileObj.name,
+    //   provider:"google"})
+      this.props.history.push("/")
+  }
+    return ( 
       <div>
         <div className="login_wrap">
           <div onClick={this.signupMove} className="login_button">
@@ -112,6 +135,7 @@ class Login extends React.Component {
                   this.state.valuePW === "change2" ? "input_change" : ""
                 }`}
                 placeholder="비밀번호"
+                type="password"
               ></input>
               {this.state.valuePW === "change2" && (
                 <div className="different">
@@ -133,11 +157,15 @@ class Login extends React.Component {
                 {/* <i className="fas fa-comment"></i> */}
                 {/* 카카오톡으로 시작하기 */}
               </div>
-              <div className="login_FB">
-                <div className="button_wrap">
-                  <i class="fab fa-facebook-f"></i>
-                </div>
-                페이스북계정으로 로그인
+              <div className="login_GG">
+                <GoogleLogin
+                  className="img"
+                  clientId="551403957497-g3nav47au0hei2r7cj9pl9vhgq2hshhj.apps.googleusercontent.com"
+                  buttonText="구글계정으로 로그인 "
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={'single_host_origin'}
+                 />
               </div>
               <div className="login_contract">
                 계속하면 Pinterest <a>서비스 약관 </a>및

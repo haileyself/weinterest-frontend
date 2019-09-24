@@ -156,35 +156,25 @@
     // .login_Ka:hover {
     //   background-color: rgb(227, 213, 63);
     // }
-    .login_FB {
+    .login_GG {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 280px;
       height: 40px;
-      border-radius: 5px;
       overflow: hidden;
       margin-top: 12px;
-      background-color: rgb(56, 84, 151);
-      color: white;
-      font-weight: 700;
-      font-size: 17px;
-
-      .button_wrap {
-        border: 1px solid black;
-        padding-right: 5px;
-        margin-left: 6px;
-      }
-
-      cursor: pointer;
-      i {
-        color: white;
-        margin-right: 15px;
-        font-size: 25px;
+      border: 1px solid #b3b2b2;
+      border-radius: 10px;
+      .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
       }
     }
-    .login_Gg:hover {
-      background-color: rgb(96, 130, 210);
+    .login_GG:hover {
+      background-color: rgb(226, 235, 255);
     }
     .login_contract {
       width: 270px;

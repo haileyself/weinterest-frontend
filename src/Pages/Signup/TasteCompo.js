@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CheckImage from "Images/CheckImage.png";
 import "./Signup.scss";
 
 // const TasteCompo = ({ info = {} }) => {
@@ -21,12 +22,16 @@ class TasteCompo extends Component {
   render() {
     return (
       <>
-        {/* <div className="imageSelect"> */}
         <figure>
-          <img src={this.props.info.thumbnail} onClick={this.onClickEvent} />
-          <p>{this.props.info.title}</p>
+          <div className="tasteContainer">
+            <div className="imageHover">
+              <img src={CheckImage} alt="check" />
+            </div>
+            <img src={this.props.info.thumbnail} onClick={this.onClickEvent} />
+            <p>{this.props.info.title}</p>
+            {/* <div className="toImageHover"></div> */}
+          </div>
         </figure>
-        {/* </div> */}
       </>
     );
   }

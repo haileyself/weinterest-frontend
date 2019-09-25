@@ -82,12 +82,12 @@ const data = [
   {
     id: 17,
     thumbnail:
-      "https://i.pinimg.com/564x/b4/61/34/b4613457a78a75011a93c78b896a09c1.jpg"
+      "https://i.pinimg.com/564x/a8/e5/86/a8e5866b38cd6f084335c9f458eb0f1b.jpg"
   },
   {
     id: 18,
     thumbnail:
-      "https://i.pinimg.com/564x/30/e7/55/30e755b99d60042be113f3bb325aacea.jpg"
+      "https://i.pinimg.com/564x/91/1f/b0/911fb05fa533b94f762b6f930eb5894b.jpg"
   },
   {
     id: 19,
@@ -97,7 +97,57 @@ const data = [
   {
     id: 20,
     thumbnail:
+      "https://i.pinimg.com/236x/8e/ee/01/8eee0121eb53a393259eee62365f0b14.jpg"
+  },
+  {
+    id: 21,
+    thumbnail:
+      "https://i.pinimg.com/236x/be/72/1b/be721ba41c7348050fac666b0fd90366.jpg"
+  },
+  {
+    id: 22,
+    thumbnail:
+      "https://i.pinimg.com/564x/61/61/c6/6161c6b4462f1b78067272d94f674e7d.jpg"
+  },
+  {
+    id: 23,
+    thumbnail:
+      "https://i.pinimg.com/564x/09/94/b3/0994b3ac062ce20c54c5c6b49b4dc420.jpg"
+  },
+  {
+    id: 24,
+    thumbnail:
+      "https://i.pinimg.com/564x/1e/9c/61/1e9c613bed11e2f9bb2e16055a9f3248.jpg"
+  },
+  {
+    id: 25,
+    thumbnail:
       "https://i.pinimg.com/236x/09/b6/9e/09b69e5247208fbc7ce5edf0c89e702f.jpg"
+  },
+  {
+    id: 26,
+    thumbnail:
+      "https://i.pinimg.com/236x/30/65/c6/3065c69582ee017ba52d80cf630351ec.jpg"
+  },
+  {
+    id: 27,
+    thumbnail:
+      "https://i.pinimg.com/564x/b4/61/34/b4613457a78a75011a93c78b896a09c1.jpg"
+  },
+  {
+    id: 28,
+    thumbnail:
+      "https://i.pinimg.com/564x/30/e7/55/30e755b99d60042be113f3bb325aacea.jpg"
+  },
+  {
+    id: 29,
+    thumbnail:
+      "https://i.pinimg.com/564x/b4/2f/46/b42f469a15ab6d8276a43bf47d56bd9b.jpg"
+  },
+  {
+    id: 30,
+    thumbnail:
+      "https://i.pinimg.com/564x/36/d9/32/36d932f790e145f13a29aab867465374.jpg"
   }
 ];
 

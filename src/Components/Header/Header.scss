@@ -71,15 +71,15 @@
         box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
       }
 
-      &:focus ~ .listToSearch {
-        display: block;
-      }
-      &:focus ~ .compoBg {
-        display: block;
-      }
+      // &:focus ~ .listToSearch {
+      //   display: block;
+      // }
+      // &:focus ~ .compoBg {
+      //   display: block;
+      // }
     }
     .listToSearch {
-      display: none;
+      display: block;
       margin: 0 5px;
       width: 98%;
       left: 0;
@@ -88,6 +88,7 @@
       position: absolute;
       padding: 20px 40px 20px 10px;
       z-index: 2;
+
       .list_First {
         display: flex;
         margin-bottom: 10px;
@@ -127,23 +128,23 @@
           margin-bottom: 10px;
           font-size: 15px;
           font-weight: 600;
-          color: #8e8e8e;
+          color: #c2aeae;
         }
         .result_Idea,
         .result_Idea2 {
-          max-width: 90%;
+          max-width: 95%;
           display: flex;
           margin-bottom: 13px;
 
           .will_Update {
-            width: 280px;
-            height: 120px;
+            position: relative;
+            width: 650px;
+            height: 100px;
             margin-right: 10px;
             border-radius: 8px;
             background-image: url("sampleimage.png");
             background-position: center;
             background-size: cover;
-            position: relative;
 
             p {
               position: absolute;
@@ -218,11 +219,12 @@
       display: flex;
       align-items: center;
       width: 100%;
+      border: 1px solid black;
 
       .msg {
         width: 100%;
         margin: 10px;
-        padding: 5px;
+        padding: 8px;
         text-align: center;
         color: #8e8e8e;
         font-size: 20px;
@@ -234,6 +236,9 @@
           border-radius: 50%;
           cursor: pointer;
         }
+      }
+      @media screen and (min-width: 1089px) {
+        margin-top: 00px;
       }
     }
   }

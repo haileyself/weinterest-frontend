@@ -10,44 +10,28 @@ class SignupFinal extends Component {
       selectedPins: [],
       choiceTaste: ""
     };
+
+    this.token = localStorage.getItem("login_token")
+      ? localStorage.getItem("login_token")
+      : "";
   }
+
   componentDidMount() {
-    // console.log("마지막페이지", this.props);
-    // fetch("http://10.58.6.27:8000/countries", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // })
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     // debugger;
-    //     this.setState({
-    //       countryList: response.countries
-    //     });
-    //   });
-    // fetch('http://10.58.6.27:8080/users/sign-up', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //    emailVal: this.props.location.state.emailVal,
-    //passwordVal: this.props.location.state.passwordVal,
-    //nicknameVal: this.props.location.state.nicknameVal,
-    //countryList: this.props.location.state.countryList,
-    //languageList: this.props.location.state.languageList,
-    //genderList: this.props.location.state.choiceGender,
-    //selectedPins :this.state.selectedPins.concat(response.data)
-    // })
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     if (response.message === 'SIGN_UP_SUCCESS') {
-    //       this.props.history.push('/');
-    //     } else  (response.message === 'USER_EXIST') {
-    //       //alert(response.message);
-    //     }
-    //   });
+    console.log("마지막페이지", this.state.selectedPins);
+    fetch("http://10.58.0.251:8000/category", {
+      method: "GET",
+      headers: {
+        Authorization: this.token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        //console.log("대꾸?", response);
+        this.setState({
+          selectedPins: response.categories
+        });
+      });
   }
   selectMyTaste = (e, id) => {
     //debugger;
@@ -58,28 +42,20 @@ class SignupFinal extends Component {
   };
 
   finalButton = () => {
-    fetch("http://10.58.6.27:8000/users/sign-up", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: "1234@gmail.com",
-        password: "1234",
-        nickname: "HAN",
-        gender: "남자",
-        country: "미국",
-        language: "영어"
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-
-        if (response.message === "sign_up_success") {
-          this.props.history.push("/login");
-        }
-      });
+    // fetch("http://10.58.6.27:8000/users/sign-up", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({})
+    // })
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     console.log(response);
+    //     if (response.message === "sign_up_success") {
+    //       this.props.history.push("/");
+    //     }
+    //   });
   };
 
   render() {
@@ -110,12 +86,12 @@ class SignupFinal extends Component {
               return <div>{element}</div>;
             })} */}
 
-                  {data[3].categories.map((el, index) => {
+                  {this.state.selectedPins.map((el, index) => {
                     return (
                       <TasteCompo
                         key={index}
                         info={el}
-                        order={el.id}
+                        //order={el.category_id}
                         onClinkHandle={this.selectMyTaste}
                       />
                     );

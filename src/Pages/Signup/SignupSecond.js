@@ -14,15 +14,13 @@ class SignupSecond extends Component {
   constructor() {
     super();
     this.state = {
-      // countryList: [],
-      // languageList: [],
       genderList: [],
       choiceGender: "--gender--"
     };
   }
 
   componentDidMount() {
-    console.log("두번째페이지", this.props);
+    // console.log("두번째페이지", this.props);
     //앞페이지에서 보낸 props가 들어왔는 지 콘솔찍어봄
 
     fetch("http://10.58.6.27:8000/genders", {
@@ -48,25 +46,32 @@ class SignupSecond extends Component {
 
   moveToNext = () => {
     const { choiceGender } = this.state;
-
-    // console.log("호잇", this.props.location.state.countryList);
-
-    if (choiceGender !== "--gender--") {
-      this.props.history.push({
-        pathname: "/signupfinal",
-        state: {
-          emailVal: this.props.location.state.emailVal,
-          passwordVal: this.props.location.state.passwordVal,
-          nicknameVal: this.props.location.state.nicknameVal,
-          countryList: this.props.location.state.countryList,
-          languageList: this.props.location.state.languageList,
-          genderList: this.state.choiceGender
-        }
-      });
-    } else if (choiceGender == "--gender--") {
+    if (choiceGender === "--gender--") {
       alert("선택 부탁 드립니다>_<");
     }
-    //console.log("1");
+    //console.log("호잇", this.props);
+    fetch("http://10.58.6.27:8000/users/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        email: this.props.location.state.emailVal,
+        password: this.props.location.state.passwordVal,
+        nickname: this.props.location.state.nicknameVal,
+        country: this.props.location.state.countryList,
+        language: this.props.location.state.languageList,
+        gender: this.state.choiceGender
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.access_token) {
+          localStorage.setItem("login_token", response.access_token);
+          this.props.history.push("/signupfinal");
+        }
+      });
   };
 
   render() {

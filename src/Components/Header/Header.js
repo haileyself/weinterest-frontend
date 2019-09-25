@@ -7,26 +7,29 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
+      text: "",
       tagList: [],
       headerToggle: false
     };
   }
-
-  inputTag = e => {
-    //console.log("click");
-    const newTagsList = [...this.state.tagList, e.target.value];
-    this.setState({
-      tagList: newTagsList
-    });
-    // console.log("검색인풋", this.state.tagList);
+  onModal = e => {
     this.setState({ headerToggle: !this.state.headerToggle });
+  };
+  inputTag = e => {
+    // console.log(e.target.value);
+    // const newTagsList = [...this.state.tagList, e.target.value];
+    this.setState({
+      text: e.target.value
+    });
+    console.log(this.state.text);
   };
 
   onKeyDownFunc = e => {
-    const val = e.target.value;
-    if (e.key === "Enter" && val) {
-      this.setState({ tagList: [...this.state.tagList, val] });
-      this.tagInPut.value = null;
+    // let val = e.target.value;
+    if (e.key === "Enter") {
+      this.setState(prev => ({ tagList: [...prev.tagList, this.state.text] }));
+      e.target.value = "";
+      console.log("enter");
     }
   };
 
@@ -45,15 +48,15 @@ class Header extends Component {
           </div>
           <div className="headerSearch">
             <input
-              type="email"
+              type="text"
               className="searchsearch"
               placeholder="검색"
-              //onChange={this.inputTag}
-              onClick={this.inputTag}
-              onKeyDown={this.onKeyDownFunc}
-              ref={c => {
-                this.tagInPut = c;
-              }}
+              onChange={this.inputTag}
+              onClick={this.onModal}
+              onKeyPress={this.onKeyDownFunc}
+              // ref={c => {
+              //   this.tagInPut = c;
+              // }}
             />
             <i className="fas fa-search small_search_Icon search_icon" />
 

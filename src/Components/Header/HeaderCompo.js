@@ -7,7 +7,7 @@ class HeaderCompo extends Component {
   }
   render() {
     console.log(this.props.tagList);
-    console.log(this.props, "프롭스");
+    //console.log(this.props, "프롭스");
     return (
       <>
         <div className="listToSearch">

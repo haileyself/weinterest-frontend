@@ -1,0 +1,258 @@
+.MyModal {
+  background: rgba(0, 0, 0, 0.7);
+  // opacity: 9;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .PopupCreateBoard {
+    display: flex;
+    width: 544px;
+    height: 326px;
+    position: relative;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #ffffff;
+    height: auto;
+
+    .subjectContainer {
+      width: 100%;
+      display: flex;
+      border-radius: 8px;
+    }
+
+    .Popupheader {
+      padding-left: 50px;
+      padding-right: 50px;
+      width: 100%;
+      height: 76px;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 24px;
+        letter-spacing: -0.4px;
+        font-weight: bold;
+      }
+    }
+
+    .xBtnBox {
+      position: absolute;
+      top: 0;
+      margin-top: 3px;
+      margin-right: 2px;
+      right: 0;
+      border-radius: 50px;
+      width: 40px;
+      height: 40px;
+      &:hover {
+        background-color: #efefef;
+      }
+    }
+
+    .xBtnBox button {
+      width: 100%;
+      height: 100%;
+      .boardClose {
+        color: #8e8e8e;
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+
+    .listContainer {
+      width: 100%;
+      height: 250px;
+    }
+    .nameList {
+      height: 80px;
+      width: 100%;
+      padding: 18px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      .boardName {
+        padding: 4px 12px;
+        width: 18%;
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .boardInputBox {
+        width: 75%;
+        border-radius: 8px;
+      }
+
+      .textBox {
+        width: 100%;
+
+        .text {
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid #8e8e8e;
+          height: 40px;
+          text-indent: 10px;
+          &::placeholder {
+            font-size: 16px;
+          }
+          &:focus {
+            box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+          }
+        }
+      }
+    }
+
+    .viewList {
+      height: 93px;
+      width: 100%;
+      padding: 18px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      .viewType {
+        padding: 4px 12px;
+        width: 18%;
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+      }
+      .viewContainer {
+        width: 384px;
+        height: 56px;
+        padding: 8px 0px;
+        display: flex;
+        align-items: center;
+      }
+
+      .chkBoxContainer {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-left: 5px;
+        margin-right: 10px;
+
+        input[type="checkbox"] {
+          zoom: 1.7;
+        }
+      }
+    }
+
+    .labelbox {
+      display: flex;
+      flex-direction: column;
+
+      .keepSecret,
+      .seeDetail {
+        font-size: 14px;
+        color: #333;
+      }
+
+      .keepSecret {
+        cursor: none;
+      }
+
+      .seeDetail {
+        font-weight: 700;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .listFooter {
+      width: 100%;
+      height: 76px;
+      padding: 8px 16px;
+      position: relative;
+
+      .listFooterBtnBox {
+        width: 143px;
+        height: 60px;
+        position: absolute;
+        right: 16px;
+        padding: 8px 0px;
+        display: flex;
+        justify-content: center;
+
+        .cancelBtnBox {
+          width: 57px;
+          height: 44px;
+          padding: 0px 8px;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          background-color: #efefef;
+          border-radius: 8px;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+          }
+
+          .cancelBtn {
+            height: 24px;
+            width: 29px;
+            // margin: 0 auto;
+            font-weight: bold;
+            font-size: 16px;
+            word-break: keep-all;
+          }
+        }
+        .createBtnBox {
+          width: 71px;
+          height: 44px;
+          padding: 0px 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #efefef;
+          border-radius: 8px;
+          margin-left: 16px;
+
+          .createBtn {
+            height: 24px;
+            width: 49px;
+            font-weight: bold;
+            font-size: 16px;
+            word-break: keep-all;
+            color: #8e8e8e;
+            background-color: inherit;
+          }
+        }
+        .activeCreateBtn {
+          height: 24px;
+          width: 49px;
+          font-weight: bold;
+          font-size: 16px;
+          word-break: keep-all;
+          color: #ffffff;
+          background-color: #e60023;
+        }
+        .activeCreateBtnBox {
+          width: 71px;
+          height: 44px;
+          padding: 0px 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #e60023;
+          border-radius: 8px;
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+}

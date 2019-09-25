@@ -5,8 +5,9 @@ import Fourpics from './Fourpics';
 import Boadrlist from './Boardlist';
 import Pinlist from './Pinlist';
 import CreateList from './CreateList';
+import CreateBoard from './CreateBoard';
 import PhotoBox from "Components/PhotoBox";
-import './Mypage.scss';
+// import './Mypage.scss';
 import 'Components/PhotoBox/PhotoBox.scss';
 import dataA from './data';
 
@@ -47,14 +48,13 @@ class Mypage extends React.Component {
 
    toggleClass = () => {
         this.setState ({active : !this.state.active});
-
    }
     render () {
     return (
         <div className="mypage">
             <div className="mypage_wrapper">
                 <div className="header_wrapper">
-                    <div className="subheader">
+                  <div className="subheader">
                         <div className="btn_wrapper">
                             <button onClick={this.toggleClass} 
                             className={`subhed_btn  ${this.state.active ? 'active_tab_addbtn' : ''}`}>
@@ -66,7 +66,7 @@ class Mypage extends React.Component {
                             <button className="subhed_btn">
                                 <i className="fas fa-upload sub_btn"></i>
                             </button>
-                            {this.state.active ? <CreateList /> : ""}
+                            {this.state.active && <CreateList handleClick={this.toggleClass} />}
                         </div>
                     </div>
                 </div>       
@@ -149,7 +149,7 @@ class Mypage extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>                    
+                        </div>                  
                         <div className="content_pic_container">
                             <div className="picture_frame_wrapper">
                             {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category} />}
@@ -166,7 +166,7 @@ class Mypage extends React.Component {
                             {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
                             {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
                             {this.state.activeTab === 'boardListTab' && <Boadrlist /> } 
-                            </div>
+                            </div> 
                         </div>
                      </div>
                 </div>
@@ -182,6 +182,8 @@ class Mypage extends React.Component {
                 </div>
             </div>
         </div>
+        
+        
     );
   }
 }

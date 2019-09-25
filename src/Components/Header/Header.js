@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderCompo from "./HeaderCompo";
 import Logo from "Images/Logo.png";
+import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 
 class Header extends Component {
@@ -10,15 +11,14 @@ class Header extends Component {
       tagList: [],
       headerToggle: false
     };
+     this.getToken = localStorage.getItem("login_token");
   }
 
   inputTag = e => {
-    //console.log("click");
     const newTagsList = [...this.state.tagList, e.target.value];
     this.setState({
       tagList: newTagsList
     });
-    // console.log("검색인풋", this.state.tagList);
     this.setState({ headerToggle: !this.state.headerToggle });
   };
 
@@ -29,10 +29,17 @@ class Header extends Component {
       this.tagInPut.value = null;
     }
   };
+  moveHome = () => {
+    this.props.history.push("/login");
+  };
+  logout=()=>{
+    localStorage.clear();
+    window.location.reload(true)
+  //   this.setState({headerToggle:!this.state.headerToggle})
+  }
 
-  render() {
-    //console.log(<headerToggle />);
-    console.log(this.state.tagList, "태그리스트");
+render() {
+    // console.log(this.state.tagList, "태그리스트");
     return (
       <div className="headerContainer">
         <div className="headerWrap">
@@ -75,7 +82,8 @@ class Header extends Component {
             <div className="restWrap">
               <i className="fas fa-comment-dots msg home"></i>
               <i className="fas fa-bell msg"></i>
-              <i className="fas fa-ellipsis-h msg"></i>
+             {this.getToken ?<Link to="/"><div onClick={this.logout} className="msg">Logout</div></Link> 
+              :<Link to="/login"><div className="msg">Login</div></Link>}
             </div>
           </div>
         </div>

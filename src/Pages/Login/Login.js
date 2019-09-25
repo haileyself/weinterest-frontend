@@ -1,15 +1,14 @@
 import React from "react";
 import logo from "../../Images/Logo.png";
-
-import GoogleLogin from 'react-google-login'
-import KakaoLogin from 'react-kakao-login';
+import GoogleLogin from "react-google-login";
+import KakaoLogin from "react-kakao-login";
 import "./Login.scss";
-import { resolve } from "url";
+// import { resolve } from "url";
 
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { valueId: "", valuePW: ""};
+    this.state = { valueId: "", valuePW: "" };
   }
 
   inputValueId = e => {
@@ -23,7 +22,7 @@ class Login extends React.Component {
   };
 
   onClickLogin = () => {
-    fetch("http://10.58.6.27:8080/users/login", {
+    fetch("http://10.58.6.27:8000/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -35,10 +34,12 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
+        console.log("나다",response)
         if (response.access_token) {
           localStorage.setItem("login_token", response.access_token);
           this.props.history.push("/");
-        }
+          window.location.reload(true)
+        }else{alert("일치하지않습니다")}
       });
     if (this.state.valueId === "") {
       this.setState({ valueId: "change" });
@@ -46,40 +47,44 @@ class Login extends React.Component {
       this.setState({ valuePW: "change2" });
     }
   };
-   responseGoogle=(response)=>{
-      fetch("http://10.58.6.27:8000/users/google-login", {
-        method: "POST",
-        headers: {
-          Authorization: response.tokenId
-        }
-      })
-        .then(response => response.json())
-        .then(response => {
-          localStorage.setItem("google_token", response.access_token);
-        });
-        this.props.history.push("/")
-   }
-   responseKakao=(response)=>{
-     console.log(response)
-     fetch("http://10.58.6.27:8000/users/kakao-login", {
-        method: "POST",
-        headers: {
-          Authorization: response.response.access_token
-        }
-      })
-        .then(response => response.json())
-        .then(response => {
-          localStorage.setItem("kakao_token", response.access_token);
-        });
-        this.props.history.push("/")
-   }
-  
-    responseFail=(err)=>{
-      console.log(err)
-    }
+
+  responseGoogle = response => {
+    fetch("http://10.58.6.27:8000/users/google-login", {
+      method: "POST",
+      headers: {
+        Authorization: response.tokenId
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        localStorage.setItem("login_token", response.access_token);
+      this.props.history.push("/");
+      window.location.reload(false)
+      });
+  };
+
+  responseKakao = response => {
+    console.log(response);
+    fetch("http://10.58.6.27:8000/users/kakao-login", {
+      method: "POST",
+      headers: {
+        Authorization: response.response.access_token
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        localStorage.setItem("login_token", response.access_token);
+        this.props.history.push("/");
+         window.location.reload(false)
+      });
+  };
+
+  responseFail = err => {
+    console.log(err);
+  };
 
   render() {
-    return ( 
+    return (
       <div>
         <div className="login_wrap">
           <div onClick={this.signupMove} className="login_button">
@@ -132,8 +137,8 @@ class Login extends React.Component {
                   buttonText="카카오톡으로 로그인 "
                   onSuccess={this.responseKakao}
                   onFailure={this.responseFail}
-                  cookiePolicy={'single_host_origin'}
-                 />
+                  cookiePolicy={"single_host_origin"}
+                />
               </div>
               <div className="login_GG">
                 <GoogleLogin
@@ -142,8 +147,8 @@ class Login extends React.Component {
                   buttonText="구글계정으로 로그인 "
                   onSuccess={this.responseGoogle}
                   onFailure={this.responseFail}
-                  cookiePolicy={'single_host_origin'}
-                 />
+                  cookiePolicy={"single_host_origin"}
+                />
               </div>
               <div className="login_contract">
                 계속하면 Pinterest <a>서비스 약관 </a>및

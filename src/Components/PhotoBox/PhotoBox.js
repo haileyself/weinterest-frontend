@@ -12,7 +12,7 @@ const PhotoBox = ({ info = {} }) => {
             <i className="fas fa-thumbtack x"></i>
             <span>저장</span>
           </div>
-          <a href="/">
+          <a href="/detailPage">
             <img src={thumbnail} />
             <div className="xoxo" />
           </a>

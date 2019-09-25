@@ -37,8 +37,17 @@ class Signup extends React.Component {
   moveToNext = () => {
     const { emailVal, passwordVal, nicknameVal } = this.state;
 
+    console.log("값이저장인가", this.state);
+
     if (emailVal.length && passwordVal.length && nicknameVal.length) {
-      this.props.history.push("signupfirst");
+      this.props.history.push({
+        pathname: "/signupfirst",
+        state: {
+          emailVal: this.state.emailVal,
+          passwordVal: this.state.passwordVal,
+          nicknameVal: this.state.nicknameVal
+        }
+      });
     } else {
       alert("전부 기입 해 주세요^^");
     }

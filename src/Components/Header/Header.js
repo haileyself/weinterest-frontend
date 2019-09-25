@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderCompo from "./HeaderCompo";
 import Logo from "Images/Logo.png";
+import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 
 class Header extends Component {
@@ -11,17 +12,18 @@ class Header extends Component {
       tagList: [],
       headerToggle: false
     };
+
+    this.getToken = localStorage.getItem("login_token");
   }
   onModal = e => {
     this.setState({ headerToggle: !this.state.headerToggle });
   };
+
   inputTag = e => {
-    // console.log(e.target.value);
-    // const newTagsList = [...this.state.tagList, e.target.value];
     this.setState({
       text: e.target.value
     });
-    console.log(this.state.text);
+    //console.log(this.state.text);
   };
 
   onKeyDownFunc = e => {
@@ -32,10 +34,18 @@ class Header extends Component {
       console.log("enter");
     }
   };
+  moveHome = () => {
+    this.props.history.push("/login");
+  };
+
+  logout = () => {
+    localStorage.clear();
+    window.location.reload(true);
+    //   this.setState({headerToggle:!this.state.headerToggle})
+  };
 
   render() {
-    //console.log(<headerToggle />);
-    console.log(this.state.tagList, "태그리스트");
+    // console.log(this.state.tagList, "태그리스트");
     return (
       <div className="headerContainer">
         <div className="headerWrap">
@@ -78,7 +88,17 @@ class Header extends Component {
             <div className="restWrap">
               <i className="fas fa-comment-dots msg home"></i>
               <i className="fas fa-bell msg"></i>
-              <i className="fas fa-ellipsis-h msg"></i>
+              {this.getToken ? (
+                <Link to="/">
+                  <div onClick={this.logout} className="msg">
+                    Logout
+                  </div>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <div className="msg">Login</div>
+                </Link>
+              )}
             </div>
           </div>
         </div>

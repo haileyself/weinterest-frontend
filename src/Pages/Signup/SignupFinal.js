@@ -34,7 +34,6 @@ class SignupFinal extends Component {
       });
   }
   selectMyTaste = (e, id) => {
-    //debugger;
     this.setState({
       choiceTaste: e.target.value
     });

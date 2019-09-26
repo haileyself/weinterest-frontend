@@ -15,6 +15,7 @@ class Header extends Component {
 
     this.getToken = localStorage.getItem("login_token");
   }
+
   onModal = e => {
     this.setState({ headerToggle: !this.state.headerToggle });
   };
@@ -31,7 +32,7 @@ class Header extends Component {
     if (e.key === "Enter") {
       this.setState(prev => ({ tagList: [...prev.tagList, this.state.text] }));
       e.target.value = "";
-      console.log("enter");
+      //console.log("enter");
     }
   };
   moveHome = () => {
@@ -45,7 +46,8 @@ class Header extends Component {
   };
 
   render() {
-    // console.log(this.state.tagList, "태그리스트");
+    console.log(this.state.tagList, "태그리스트");
+
     return (
       <div className="headerContainer">
         <div className="headerWrap">
@@ -86,17 +88,17 @@ class Header extends Component {
           <div className="theRestOf">
             <div className="box"></div>
             <div className="restWrap">
-              <i className="fas fa-comment-dots msg home"></i>
-              <i className="fas fa-bell msg"></i>
+              <i className="fas fa-comment-dots msgIcon"></i>
+              <i className="fas fa-bell alertIcon"></i>
               {this.getToken ? (
                 <Link to="/">
-                  <div onClick={this.logout} className="msg">
+                  <div onClick={this.logout} className="loginIcon">
                     Logout
                   </div>
                 </Link>
               ) : (
                 <Link to="/login">
-                  <div className="msg">Login</div>
+                  <div className="loginIcon">Login</div>
                 </Link>
               )}
             </div>

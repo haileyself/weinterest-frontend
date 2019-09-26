@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import IdeaCompo from "./IdeaCompo";
 import "./Header.scss";
 
 class HeaderCompo extends Component {
@@ -6,8 +7,8 @@ class HeaderCompo extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.tagList);
-    //console.log(this.props, "프롭스");
+    console.log("이거다", this.props.tagList);
+    console.log(this.props, "프롭스");
     return (
       <>
         <div className="listToSearch">
@@ -28,51 +29,12 @@ class HeaderCompo extends Component {
           </div>
           <div className="list_Second">
             <div className="recommendIdea">추천 아이디어</div>
-            <div className="result_Idea">
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-            </div>
+            <IdeaCompo />
           </div>
           <div className="list_Second">
             <div className="recommendIdea">인기 아이디어</div>
-            <div className="result_Idea">
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-            </div>
-            <div className="result_Idea 2">
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-              <div className="will_Update">
-                <p>사진사진</p>
-              </div>
-            </div>
+            <IdeaCompo />
+            <IdeaCompo />
           </div>
         </div>
       </>

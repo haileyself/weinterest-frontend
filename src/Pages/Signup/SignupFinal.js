@@ -17,7 +17,7 @@ class SignupFinal extends Component {
   }
 
   componentDidMount() {
-    console.log("마지막페이지", this.state.selectedPins);
+    //console.log("마지막페이지", this.state.selectedPins);
     fetch("http://10.58.0.251:8000/category", {
       method: "GET",
       headers: {
@@ -41,7 +41,7 @@ class SignupFinal extends Component {
   };
 
   finalButton = () => {
-    // fetch("http://10.58.6.27:8000/users/sign-up", {
+    // fetch(""", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json"

@@ -79,19 +79,21 @@
       // }
     }
     .listToSearch {
-      display: block;
+      //display: block;
       margin: 0 5px;
       width: 98%;
       left: 0;
       top: 40px;
       background-color: white;
       position: absolute;
-      padding: 20px 40px 20px 10px;
+      padding: 20px 30px 20px 10px;
       z-index: 2;
+      //border: 1px solid hotpink;
 
       .list_First {
         display: flex;
         margin-bottom: 10px;
+        //border: 1px solid blue;
 
         div {
           margin-right: 3px;
@@ -130,9 +132,8 @@
           font-weight: 600;
           color: #c2aeae;
         }
-        .result_Idea,
-        .result_Idea2 {
-          max-width: 95%;
+        .result_Idea {
+          max-width: 100%;
           display: flex;
           margin-bottom: 13px;
 
@@ -145,6 +146,7 @@
             background-image: url("sampleimage.png");
             background-position: center;
             background-size: cover;
+            //border: 1px solid blue;
 
             p {
               position: absolute;
@@ -180,13 +182,12 @@
     .home_1,
     .home_2,
     .home_3 {
+      border-radius: 50%;
       padding: 10px;
-      //margin: 5px;
+      margin: 0 3px;
       font-size: 15px;
       font-weight: 600;
       color: #8e8e8e;
-      border-radius: 50%;
-      margin: 0 3px;
 
       &:hover {
         background-color: #efefef;
@@ -199,6 +200,14 @@
     .home_1 {
       width: 100%;
       text-align: center;
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
+    .home_2 {
+      @media screen and (max-width: 1403px) {
+        display: none;
+      }
     }
   }
 
@@ -213,21 +222,27 @@
       border-left: 2px solid#efefef;
       align-items: center;
       padding: 8px;
-      margin: 0 10px;
+      margin: 0 5px;
     }
+
     .restWrap {
       display: flex;
+      justify-content: space-around;
       align-items: center;
-      width: 100%;
-      // border: 1px solid black;
+      padding: 5px 20px;
+      margin: 1px;
+      //width: 100%;
+      //border: 1px solid blue;
 
-      .msg {
+      .msgIcon,
+      .alertIcon {
         width: 100%;
         margin: 10px;
-        padding: 8px;
+        padding: 10px;
         text-align: center;
         color: #8e8e8e;
         font-size: 20px;
+        // border: 1px solid red;
 
         &:hover {
           background-color: #efefef;
@@ -237,8 +252,33 @@
           cursor: pointer;
         }
       }
-      @media screen and (min-width: 1089px) {
-        margin-top: 00px;
+      .msgIcon {
+        @media screen and (max-width: 620px) {
+          display: none;
+        }
+      }
+      .alertIcon {
+        @media screen and (max-width: 800px) {
+          display: none;
+        }
+      }
+      .loginIcon {
+        //width: 100%;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        color: #8e8e8e;
+        font-size: 14px;
+        //border: 1px solid green;
+
+        &:hover {
+          background-color: #efefef;
+          box-shadow: 0 0 0 4px #efefef;
+          border-radius: 50%;
+          font-weight: 700;
+          color: black;
+          cursor: pointer;
+        }
       }
     }
   }

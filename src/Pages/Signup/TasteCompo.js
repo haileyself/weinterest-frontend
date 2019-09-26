@@ -15,12 +15,16 @@ import "./Signup.scss";
 // };
 
 class TasteCompo extends Component {
-  onClickEvent = e => {
-    this.props.onClinkHandle(e, this.props.order);
-  };
-
+  // onClickEvent = e => {
+  //   this.props.onClinkHandle(e, this.props.order);
+  //   //console.log(this.props.order);
+  // };
+  constructor(props) {
+    super(props);
+  }
   render() {
     // console.log("배고파", this.props.info);
+    //console.log("뭐라도써야겠어", this.props.handleClick);
     return (
       <>
         <figure>
@@ -28,7 +32,10 @@ class TasteCompo extends Component {
             <div className="imageHover">
               <img src={CheckImage} alt="check" />
             </div>
-            <img src={this.props.info.img_url} onClick={this.onClickEvent} />
+            <img
+              src={this.props.info.img_url}
+              onClick={this.props.handleClick}
+            />
             <p>{this.props.info.title}</p>
             {/* <div className="toImageHover"></div> */}
           </div>

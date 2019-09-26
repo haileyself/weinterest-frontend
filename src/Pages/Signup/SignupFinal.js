@@ -10,9 +10,9 @@ class SignupFinal extends Component {
       selectedPins: [],
       choiceTaste: ""
     };
-
-    this.token = localStorage.getItem("login_token")
-      ? localStorage.getItem("login_token")
+    //debugger;
+    this.token = localStorage.getItem("signup_token")
+      ? localStorage.getItem("signup_token")
       : "";
   }
 
@@ -21,7 +21,6 @@ class SignupFinal extends Component {
     fetch("http://10.58.0.251:8000/category", {
       method: "GET",
       headers: {
-        Authorization: this.token,
         "Content-Type": "application/json"
       }
     })
@@ -33,28 +32,60 @@ class SignupFinal extends Component {
         });
       });
   }
-  selectMyTaste = (e, id) => {
+
+  selectMyTaste = e => {
     this.setState({
       choiceTaste: e.target.value
     });
-    // console.log(e.target.value);
+    // console.log("값", e.target.value);
+  };
+
+  handleClick = (e, data) => {
+    //console.log("나와라데이터", data);
   };
 
   finalButton = () => {
-    // fetch(""", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({})
-    // })
-    //   .then(response => response.json())
-    //   .then(response => {
-    //     console.log(response);
-    //     if (response.message === "sign_up_success") {
-    //       this.props.history.push("/");
-    //     }
-    //   });
+    //debugger;
+    fetch(
+      "http://10.58.0.251:8000/category/user-category",
+
+      {
+        method: "POST",
+
+        headers: {
+          Authorization: this.token,
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          user_categories: [
+            {
+              category_id: 3
+            },
+            {
+              category_id: 1
+            },
+            {
+              category_id: 2
+            },
+            {
+              category_id: 4
+            },
+            {
+              category_id: 5
+            }
+          ]
+        })
+      }
+    )
+      .then(response => response.json())
+      .then(response => {
+        //console.log(response);
+        //debugger;
+        if (response.message === "USER_CAGEGORY_UPDATE") {
+          this.props.history.push("/");
+        }
+      });
   };
 
   render() {
@@ -65,7 +96,7 @@ class SignupFinal extends Component {
     // let showCompo = data[3].categories.map((el, i) => (
     //   <tasteCompo key={i} info={el} />
     // ));
-
+    //console.log(this.selectedPins);
     return (
       <div className="signup_wrap">
         <div className="finalContainer">
@@ -91,7 +122,7 @@ class SignupFinal extends Component {
                         key={index}
                         info={el}
                         //order={el.category_id}
-                        onClinkHandle={this.selectMyTaste}
+                        onClinkHandle={this.handleClick}
                       />
                     );
                   })}

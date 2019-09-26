@@ -6,48 +6,53 @@ import "./Main.scss";
 class Main extends Component {
   constructor() {
     super();
+    this.state = {
+      mainBox: [
+        { pins: [] },
+        { pins: [] },
+        { pins: [] },
+        { pins: [] },
+        { pins: [] }
+      ]
+    };
+
+    this.token = localStorage.getItem("signup_token")
+      ? localStorage.getItem("signup_token")
+      : this.props.history.push("/login");
   }
 
   componentDidMount() {
-    if (!window.localStorage.login_token) {
-      this.props.history.push("/login");
-    }
+    fetch("http://10.58.0.251:8000/pins?offset=0&limit=5", {
+      method: "GET",
+      headers: {
+        Authorization: this.token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ mainBox: response.pins });
+      });
   }
-  //   fetch(``, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       AUTHORIZATION: this.token
-  //     }
-  //   }).then(response => {
-  //     console.log(response);
-  //   });
-  // }
-  //     if (response.ok) {
-  //       return response.json();
-  //     } else {
-  //       throw new Error('로그인이 필요합니다!');
-  //     }
-  //   })
-  //   .then(response => response.DATA)
-  //   .then(response => {
-  //     this.setState({
-  //       title: response.TITLE,
-  //       category: response.CATEGORY,
-  //       content: response.CONTENT,
-  //     });
-  //   })
-  //   .catch(error => {
-  //     alert('로그인을 해야만 볼 수 있습니다!');
-  //     this.props.history.push('/login');
-  //   });
-  // }
+
   render() {
     return (
       <div className="mainContainer">
         <div className="columns">
           {/* <PhotoBox /> */}
-          {data.map((el, i) => (
+          {this.state.mainBox[0].pins.map((el, i) => (
+            <PhotoBox info={el} key={i} />
+          ))}
+          {this.state.mainBox[1].pins.map((el, i) => (
+            <PhotoBox info={el} key={i} />
+          ))}
+          {this.state.mainBox[2].pins.map((el, i) => (
+            <PhotoBox info={el} key={i} />
+          ))}
+          {this.state.mainBox[3].pins.map((el, i) => (
+            <PhotoBox info={el} key={i} />
+          ))}
+          {this.state.mainBox[4].pins.map((el, i) => (
             <PhotoBox info={el} key={i} />
           ))}
         </div>

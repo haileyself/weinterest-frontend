@@ -1,27 +1,29 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./PhotoBox.scss";
 
-const PhotoBox = ({ info = {} }) => {
-  const { thumbnail } = info;
+const PhotoBox = props => {
+  //const { pin__link } = info;
 
+  console.log("나와라", props.info);
   return (
     <div className="photoCompo">
-      <figure>
-        <div className="xoxoxo">
-          <div className="pinButton">
-            <i className="fas fa-thumbtack x"></i>
-            <span>저장</span>
-          </div>
-          <a href="/detailPage">
-            <img src={thumbnail} />
+      <Link to={`/detailPage/${props.info.pin__id}`}>
+        <figure>
+          <div className="xoxoxo">
+            <div className="pinButton">
+              <i className="fas fa-thumbtack x"></i>
+              <span>저장</span>
+            </div>
+            <img src={props.info.pin__link} />
             <div className="xoxo" />
-          </a>
-        </div>
-        <div className="imageBelow">
-          <p>추천 핀</p>
-          <i className="fas fa-ellipsis-h dotdotdot"></i>
-        </div>{" "}
-      </figure>
+          </div>
+          <div className="imageBelow">
+            <p>추천 핀</p>
+            <i className="fas fa-ellipsis-h dotdotdot"></i>
+          </div>{" "}
+        </figure>
+      </Link>
     </div>
   );
 };

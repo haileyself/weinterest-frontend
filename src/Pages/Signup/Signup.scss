@@ -9,7 +9,10 @@
   .signup_box_wrap {
     max-width: 460px;
     width: 100%;
-
+    // border: 1px solid blue;
+    @media screen and (max-width: 460px) {
+      width: 90%;
+    }
     .signup_box {
       //  border: 1px solid black;
       padding: 10px;
@@ -37,6 +40,10 @@
         padding: 4px;
         font-size: 28px;
         font-weight: 700;
+        @media screen and (max-width: 460px) {
+          font-size: 20px;
+          text-align: center;
+        }
         //@includeborder: 1px solid black;
       }
       .boxWrap {
@@ -45,6 +52,10 @@
         margin: 15px;
         padding: 24px 18px;
         width: 73%;
+        //border: 1px solid green;
+        @media screen and (max-width: 460px) {
+          width: 100%;
+        }
 
         .signup_Email,
         .signup_PW,
@@ -120,6 +131,9 @@
         a:hover {
           text-decoration: underline;
         }
+        @media screen and (max-width: 460px) {
+          display: none;
+        }
       }
     }
   }
@@ -159,6 +173,9 @@
       padding: 10px 15px 0;
       overflow: overlay;
       height: 450px;
+      @media screen and (max-width: 460px) {
+        height: 200px;
+      }
 
       figure {
         position: relative;

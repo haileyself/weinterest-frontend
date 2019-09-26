@@ -64,7 +64,7 @@ class Login extends React.Component {
   };
 
   responseKakao = response => {
-    console.log(response);
+    console.log("카톡",response);
     fetch("http://10.58.6.27:8000/users/kakao-login", {
       method: "POST",
       headers: {
@@ -73,9 +73,11 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
+        console.log("반응",response)
+        console.log(this.props)
         localStorage.setItem("login_token", response.access_token);
         this.props.history.push("/");
-         window.location.reload(false)
+        //  window.location.reload(false)
       });
   };
 

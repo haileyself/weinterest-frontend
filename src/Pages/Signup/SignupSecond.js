@@ -69,7 +69,7 @@ class SignupSecond extends Component {
       .then(response => {
         if (response.access_token) {
           //debugger;
-          localStorage.setItem("signup_token", response.access_token);
+          localStorage.setItem("login_token", response.access_token);
           this.props.history.push("/signupfinal");
         }
       });

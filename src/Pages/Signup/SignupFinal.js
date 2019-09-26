@@ -11,8 +11,8 @@ class SignupFinal extends Component {
       choiceTaste: ""
     };
     //debugger;
-    this.token = localStorage.getItem("signup_token")
-      ? localStorage.getItem("signup_token")
+    this.token = localStorage.getItem("login_token")
+      ? localStorage.getItem("login_token")
       : "";
   }
 

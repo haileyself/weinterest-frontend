@@ -6,20 +6,19 @@ import Data from "./DetailData";
 import data from "Components/PhotoBox/data";
 import DetailSaveBox from "./DetailSaveBox";
 import miniData from "./DatailDb";
-
 import "./Detail.scss";
 
 class Detail extends React.Component {
-  constructor() {
-    super();
+  constructor(props) { 
+    super(props);
     this.state = {
       activeTap: "imgBox",
       changeSend: "",
       download: "",
       isDetailPage: []
     };
+    // console.log(props)
   }
-
   showTap = e => {
     this.setState({ activeTap: e });
   };
@@ -40,19 +39,21 @@ class Detail extends React.Component {
   };
 
   componentDidMount() {
-    // fetch("앤드포인트", {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // })
-    //   .then(Response => Response.json)
-    //   .then(Response => {
-    //     this.setState(isDetailPage:Response);
-    //   });
+    // console.log(this.props)
+    fetch(`http://10.58.0.251:8000/pins/${this.props.match.params.id}`, {
+      method: "GET",
+      headers: {
+        Authorization: localStorage.getItem("login_token")
+      }
+    })
+      .then(Response => Response.json)
+      .then(Response => {
+        console.log("반응",Response)
+        this.setState({isDetailPage:Response});
+      });
   }
-
   render() {
+    console.log("이거이거",this.state)
     return (
       <div className="detail_body">
         <div className="detail_wrap">
@@ -102,7 +103,7 @@ class Detail extends React.Component {
                         </div>
                         <div className="changeImg_title">최고 보드 제안</div>
                         {miniData.map((el, i) => (
-                          <DetailSaveBox img={el.img} text={el.text} key={i} />
+                          <DetailSaveBox img={el}key={i} />
                         ))}
                       </div>
                       <div className="changeImg_1">
@@ -132,7 +133,7 @@ class Detail extends React.Component {
             <div className="detail_main_page_box_wrap">
               <a href={Data.link}>
                 <div className="detail_main_page_box_img">
-                  <img src={Data.img}></img>
+                  <img src={this.state.isDetailPage.pin_info}></img>
                   <div className="img_text_wrap">
                     <div className="img_box">
                       <i class="fas fa-location-arrow"></i>
@@ -144,7 +145,8 @@ class Detail extends React.Component {
               <div className="detail_main_page_box_text">
                 <div className="detail_main_page_box_text_top1">
                   <div className="detail_main_page_box_text_top1_img">
-                    <img src={Data.idImg}></img>
+                    {/* <img src={Data.idImg}></img> */}
+                    <i class="fas fa-user"></i>
                   </div>
                   <div className="detail_main_page_box_text_top1_text">
                     <div className="detail_main_page_box_text_top1_text1">

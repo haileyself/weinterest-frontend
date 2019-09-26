@@ -20,6 +20,7 @@ class TasteCompo extends Component {
   };
 
   render() {
+    // console.log("배고파", this.props.info);
     return (
       <>
         <figure>
@@ -27,7 +28,7 @@ class TasteCompo extends Component {
             <div className="imageHover">
               <img src={CheckImage} alt="check" />
             </div>
-            <img src={this.props.info.thumbnail} onClick={this.onClickEvent} />
+            <img src={this.props.info.img_url} onClick={this.onClickEvent} />
             <p>{this.props.info.title}</p>
             {/* <div className="toImageHover"></div> */}
           </div>

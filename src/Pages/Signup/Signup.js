@@ -37,7 +37,7 @@ class Signup extends React.Component {
   moveToNext = () => {
     const { emailVal, passwordVal, nicknameVal } = this.state;
 
-    console.log("값이저장인가", this.state);
+    // console.log("값이저장인가", this.state);
 
     if (emailVal.length && passwordVal.length && nicknameVal.length) {
       this.props.history.push({

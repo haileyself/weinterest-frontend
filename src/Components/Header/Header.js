@@ -8,38 +8,46 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
+      text: "",
       tagList: [],
       headerToggle: false
     };
-     this.getToken = localStorage.getItem("login_token");
+
+    this.getToken = localStorage.getItem("login_token");
   }
 
-  inputTag = e => {
-    const newTagsList = [...this.state.tagList, e.target.value];
-    this.setState({
-      tagList: newTagsList
-    });
+  onModal = e => {
     this.setState({ headerToggle: !this.state.headerToggle });
   };
 
+  inputTag = e => {
+    this.setState({
+      text: e.target.value
+    });
+    //console.log(this.state.text);
+  };
+
   onKeyDownFunc = e => {
-    const val = e.target.value;
-    if (e.key === "Enter" && val) {
-      this.setState({ tagList: [...this.state.tagList, val] });
-      this.tagInPut.value = null;
+    // let val = e.target.value;
+    if (e.key === "Enter") {
+      this.setState(prev => ({ tagList: [...prev.tagList, this.state.text] }));
+      e.target.value = "";
+      //console.log("enter");
     }
   };
   moveHome = () => {
     this.props.history.push("/login");
   };
-  logout=()=>{
-    localStorage.clear();
-    window.location.reload(true)
-  //   this.setState({headerToggle:!this.state.headerToggle})
-  }
 
-render() {
-    // console.log(this.state.tagList, "태그리스트");
+  logout = () => {
+    localStorage.clear();
+    window.location.reload(true);
+    //   this.setState({headerToggle:!this.state.headerToggle})
+  };
+
+  render() {
+    console.log(this.state.tagList, "태그리스트");
+
     return (
       <div className="headerContainer">
         <div className="headerWrap">
@@ -52,15 +60,15 @@ render() {
           </div>
           <div className="headerSearch">
             <input
-              type="email"
+              type="text"
               className="searchsearch"
               placeholder="검색"
-              //onChange={this.inputTag}
-              onClick={this.inputTag}
-              onKeyDown={this.onKeyDownFunc}
-              ref={c => {
-                this.tagInPut = c;
-              }}
+              onChange={this.inputTag}
+              onClick={this.onModal}
+              onKeyPress={this.onKeyDownFunc}
+              // ref={c => {
+              //   this.tagInPut = c;
+              // }}
             />
             <i className="fas fa-search small_search_Icon search_icon" />
 
@@ -80,10 +88,19 @@ render() {
           <div className="theRestOf">
             <div className="box"></div>
             <div className="restWrap">
-              <i className="fas fa-comment-dots msg home"></i>
-              <i className="fas fa-bell msg"></i>
-             {this.getToken ?<Link to="/"><div onClick={this.logout} className="msg">Logout</div></Link> 
-              :<Link to="/login"><div className="msg">Login</div></Link>}
+              <i className="fas fa-comment-dots msgIcon"></i>
+              <i className="fas fa-bell alertIcon"></i>
+              {this.getToken ? (
+                <Link to="/">
+                  <div onClick={this.logout} className="loginIcon">
+                    Logout
+                  </div>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <div className="loginIcon">Login</div>
+                </Link>
+              )}
             </div>
           </div>
         </div>

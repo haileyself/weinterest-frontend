@@ -151,22 +151,27 @@ class Mypage extends React.Component {
                             </div>
                         </div>                  
                         <div className="content_pic_container">
-                            <div className="picture_frame_wrapper">
                             {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category} />}
                             {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataB.imageSetListB} cate={dataB.category} />}
                             {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category}/>}
+                        </div>
+                        <div className="pinContainer">
                             {this.state.activeTab === 'pinTab' && <Pinlist />}
+
+                        </div>
+                        <div className="content_pic_container">
                             {this.state.activeTab === 'sixPicsTab' && <Mypicframe  imageList={dataA.imageSetListA} cate={dataA.category} />}
                             {this.state.activeTab === 'sixPicsTab' && <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category} />}
                             {this.state.activeTab === 'sixPicsTab' && <Mypicframe   imageList={dataB.imageSetListB} cate={dataB.category} />}
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> }
+                        </div>
+                        <div className="fourpicCntr">   
                             {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
+                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
+                            
+                        </div>
+                        <div className="boardListCntr">
                             {this.state.activeTab === 'boardListTab' && <Boadrlist /> } 
-                            </div> 
                         </div>
                      </div>
                 </div>

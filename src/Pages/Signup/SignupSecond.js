@@ -31,7 +31,7 @@ class SignupSecond extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        // debugger;
+        //debugger;
         this.setState({
           genderList: response.genders
         });
@@ -50,7 +50,7 @@ class SignupSecond extends Component {
       alert("선택 부탁 드립니다>_<");
     }
     //console.log("호잇", this.props);
-    fetch("http://10.58.6.27:8000/users/sign-up", {
+    fetch("http://10.58.0.251:8000/users/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -68,7 +68,8 @@ class SignupSecond extends Component {
       .then(response => response.json())
       .then(response => {
         if (response.access_token) {
-          localStorage.setItem("login_token", response.access_token);
+          //debugger;
+          localStorage.setItem("signup_token", response.access_token);
           this.props.history.push("/signupfinal");
         }
       });

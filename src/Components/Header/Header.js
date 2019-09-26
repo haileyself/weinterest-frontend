@@ -46,7 +46,7 @@ class Header extends Component {
   };
 
   render() {
-    console.log(this.state.tagList, "태그리스트");
+    //console.log(this.state.tagList, "태그리스트");
 
     return (
       <div className="headerContainer">

@@ -21,7 +21,7 @@ class SignupFirst extends Component {
     };
   }
   componentDidMount() {
-    console.log("여기에!", this.props);
+    //console.log("여기에!", this.props);
     fetch("http://10.58.6.27:8000/countries", {
       method: "GET",
       headers: {

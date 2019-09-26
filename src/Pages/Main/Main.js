@@ -22,7 +22,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.0.251:8000/pins?offset=0&limit=5", {
+    fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
       method: "GET",
       headers: {
         Authorization: this.token,

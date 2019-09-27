@@ -46,14 +46,14 @@ class Detail extends React.Component {
         Authorization: localStorage.getItem("login_token")
       }
     })
-      .then(Response => Response.json)
+      .then(Response => Response.json())
       .then(Response => {
-        console.log("반응",Response)
+        //console.log("반응",Response)
         this.setState({isDetailPage:Response});
       });
   }
   render() {
-    console.log("이거이거",this.state)
+    // console.log("이거이거", this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url)
     return (
       <div className="detail_body">
         <div className="detail_wrap">
@@ -133,7 +133,8 @@ class Detail extends React.Component {
             <div className="detail_main_page_box_wrap">
               <a href={Data.link}>
                 <div className="detail_main_page_box_img">
-                  <img src={this.state.isDetailPage.pin_info}></img>
+                  {/* <img src={Data.img}/> */}
+                  <img src={this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url}></img>
                   <div className="img_text_wrap">
                     <div className="img_box">
                       <i class="fas fa-location-arrow"></i>

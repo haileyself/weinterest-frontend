@@ -1,5 +1,6 @@
 import React from "react";
 import "./Mypage.scss";
+import "./Mypicframe.scss"
 import data from "./data";
 import Picitem from "./Picitem";
 

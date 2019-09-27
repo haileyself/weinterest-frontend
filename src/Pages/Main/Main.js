@@ -4,8 +4,8 @@ import data from "Components/PhotoBox/data";
 import "./Main.scss";
 
 class Main extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       mainBox: [
         { pins: [] },
@@ -15,10 +15,10 @@ class Main extends Component {
         { pins: [] }
       ]
     };
-
-    this.token = localStorage.getItem("signup_token")
-      ? localStorage.getItem("signup_token")
-      : this.props.history.push("/login");
+console.log("main")
+    this.token = localStorage.getItem("login_token")
+      ? localStorage.getItem("login_token")
+      : props.history.push("/login");
   }
 
   componentDidMount() {

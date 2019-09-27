@@ -37,10 +37,28 @@ let dataB = {
 class Mypage extends React.Component {
     constructor() {
         super();
-        this.state = {activeTab : 'boardTab',
-        active : false,
-    };
+        this.state = {
+            activeTab : 'boardTab',
+            active : false,
+            items : [],
+        };
     }
+    
+    componentDidMount ()  {
+        fetch('http://10.58.0.251:8006/boards', {
+            method: 'GET',
+            headers: {
+                Authorization : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Njk2MTkwMzF9.He01KcTxV0Sf9vmy3GAEAxLZF8TXWC9Pqn07hd6fuG4'
+            },
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            console.log(response.pins);
+            this.setState({
+                items : response.pins
+            });
+    });
+}
 
     pickTab = (tab) => {
         this.setState({ activeTab : tab });
@@ -50,6 +68,7 @@ class Mypage extends React.Component {
         this.setState ({active : !this.state.active});
    }
     render () {
+        console.log(this.state.items,'나와제발...');
     return (
         <div className="mypage">
             <div className="mypage_wrapper">
@@ -151,24 +170,17 @@ class Mypage extends React.Component {
                             </div>
                         </div>                  
                         <div className="content_pic_container">
-                            {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category} />}
-                            {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataB.imageSetListB} cate={dataB.category} />}
-                            {this.state.activeTab === 'boardTab' &&  <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category}/>}
+                            {this.state.activeTab === 'boardTab' && this.state.items.map((el, i) => <Mypicframe info={el.pins} key={i} />)}
                         </div>
                         <div className="pinContainer">
-                            {this.state.activeTab === 'pinTab' && <Pinlist />}
-
+                            {this.state.activeTab === 'pinTab' &&  <Pinlist />}
                         </div>
                         <div className="content_pic_container">
-                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe  imageList={dataA.imageSetListA} cate={dataA.category} />}
-                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe imageList={dataA.imageSetListA} cate={dataA.category} />}
-                            {this.state.activeTab === 'sixPicsTab' && <Mypicframe   imageList={dataB.imageSetListB} cate={dataB.category} />}
+                            {this.state.activeTab === 'sixPicsTab' &&  this.state.items.map((el, i) => <Mypicframe info={el.pins} key={i} />)}
                         </div>
+
                         <div className="fourpicCntr">   
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
-                            {this.state.activeTab === 'fourPicsTab' && <Fourpics /> } 
-                            
+                            {this.state.activeTab === 'fourPicsTab' && this.state.items.map((el, i) => <Fourpics info= {el. pins} key={i} />) }
                         </div>
                         <div className="boardListCntr">
                             {this.state.activeTab === 'boardListTab' && <Boadrlist /> } 

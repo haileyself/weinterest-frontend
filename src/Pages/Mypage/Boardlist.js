@@ -14,8 +14,8 @@ class Boadrlist extends React.Component {
                                             <div className="boardlist_item_container">
                                                 <div className="boardlist_item">
                                                     <div className="boardlist_img"></div>
-                                                    <div className="boardlist_name">홈페이지</div>
-                                                    <div className="boardlist_countpin">핀 1개</div>
+                                                    <div className="boardlist_name">배경화면</div>
+                                                    <div className="boardlist_countpin">핀 6개</div>
                                                 </div>
                                                 <div className="boardlist_detail">     
                                                     <div className="boardlist_createdAt">2019년 9월 20일</div>

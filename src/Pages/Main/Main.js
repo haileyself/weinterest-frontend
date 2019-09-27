@@ -15,14 +15,14 @@ class Main extends Component {
         { pins: [] }
       ]
     };
-console.log("main")
+    console.log("main");
     this.token = localStorage.getItem("login_token")
       ? localStorage.getItem("login_token")
       : props.history.push("/login");
   }
 
   componentDidMount() {
-    fetch("http://10.58.0.251:8000/pins?offset=0&limit=5", {
+    fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
       method: "GET",
       headers: {
         Authorization: this.token,

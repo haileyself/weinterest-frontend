@@ -23,7 +23,7 @@ class SignupSecond extends Component {
     // console.log("두번째페이지", this.props);
     //앞페이지에서 보낸 props가 들어왔는 지 콘솔찍어봄
 
-    fetch("http://10.58.6.27:8000/genders", {
+    fetch("http://10.58.0.251:8000/genders", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

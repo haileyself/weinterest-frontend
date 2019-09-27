@@ -4,8 +4,7 @@ import "./PhotoBox.scss";
 
 const PhotoBox = props => {
   //const { pin__link } = info;
-
-  console.log(props);
+  
   return (
     <div className="photoCompo">
       <Link to={`/detailPage/${props.info.pin__id}`}>

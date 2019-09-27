@@ -1,6 +1,6 @@
 import React from "react";
 import './Mypage.scss';
-import PhotoBox2 from "Components/PhotoBox";
+import PhotoBox2 from "Components/PhotoBox2";
 
 
 const dataA = [
@@ -31,7 +31,6 @@ class Pinlist extends React.Component {
     render() {
         return (
             <div className="pinlist_wrapper">
-                <a href='/'>
                 <div className="pinlist_innerWrapper">
                     <div className="createPin">
                         <div className="picAdd_wrapper">
@@ -42,7 +41,6 @@ class Pinlist extends React.Component {
                         <div className="makePin">핀 만들기</div>
                     </div>
                 </div>
-                </a>
                     <>
                     {
                         dataA.map((el,i)=>{

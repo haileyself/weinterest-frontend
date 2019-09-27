@@ -6,7 +6,6 @@ import Boadrlist from './Boardlist';
 import Pinlist from './Pinlist';
 import CreateList from './CreateList';
 import CreateBoard from './CreateBoard';
-import PhotoBox from "Components/PhotoBox";
 // import './Mypage.scss';
 import 'Components/PhotoBox/PhotoBox.scss';
 import dataA from './data';

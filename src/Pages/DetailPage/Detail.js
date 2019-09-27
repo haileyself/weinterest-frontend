@@ -15,10 +15,37 @@ class Detail extends React.Component {
       activeTap: "imgBox",
       changeSend: "",
       download: "",
-      isDetailPage: []
+      isDetailPage: {},
+      mainBox: [
+        { pins: [] },
+        { pins: [] },
+        { pins: [] },
+        { pins: [] },
+        { pins: [] }
+      ]
     };
     // console.log(props)
+    this.token = localStorage.getItem("login_token")
+      ? localStorage.getItem("login_token")
+      : props.history.push("/login");
   }
+
+  checkCategoryId = (pin_id) => {
+    let defaultId = 0;
+    // debugger;
+    for (let index=0; index<this.state.mainBox.length; index++){
+      for(let i=0; i<this.state.mainBox[index].pins.length; i++){
+        if(pin_id === this.state.mainBox[index].pins[i].pin__id){
+          // debugger;
+
+          return index;
+        }
+      }
+    }
+
+    return defaultId;
+  };
+
   showTap = e => {
     this.setState({ activeTap: e });
   };
@@ -46,14 +73,34 @@ class Detail extends React.Component {
         Authorization: localStorage.getItem("login_token")
       }
     })
-      .then(Response => Response.json)
+      .then(Response => Response.json())
       .then(Response => {
-        console.log("반응",Response)
+        //console.log("반응",Response)
+        // debugger;
         this.setState({isDetailPage:Response});
       });
+      
+      fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
+        method: "GET",
+        headers: {
+          Authorization: this.token,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.json())
+        .then(response => {
+          // debugger;
+          this.setState({ mainBox: response.pins });
+        });
   }
   render() {
-    console.log("이거이거",this.state)
+    // console.log("이거이거", this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url)
+    let pin_id = -1;
+    if('pin_info' in this.state.isDetailPage){
+      pin_id = this.state.isDetailPage.pin_info[0].pin_id;
+    }
+    
+    let categoryID = this.checkCategoryId(pin_id);
     return (
       <div className="detail_body">
         <div className="detail_wrap">
@@ -133,7 +180,8 @@ class Detail extends React.Component {
             <div className="detail_main_page_box_wrap">
               <a href={Data.link}>
                 <div className="detail_main_page_box_img">
-                  <img src={this.state.isDetailPage.pin_info}></img>
+                  {/* <img src={Data.img}/> */}
+                  <img src={this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url}></img>
                   <div className="img_text_wrap">
                     <div className="img_box">
                       <i class="fas fa-location-arrow"></i>
@@ -216,9 +264,9 @@ class Detail extends React.Component {
         <div className="detail_similar_title">유사한 핀 더보기</div>
         <div className="detail_similar_img_box">
           <div className="detail_similar_img">
-            {data.map((el, i) => (
-              <PhotoBox info={el} key={i} />
-            ))}
+          {this.state.mainBox[categoryID].pins.map((el, i) => (
+            <PhotoBox info={el} key={i} />
+          ))}
           </div>
         </div>
       </div>

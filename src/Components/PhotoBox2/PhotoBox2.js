@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./PhotoBox.scss";
+import "./PhotoBox2.scss";
 
 const PhotoBox2 = props => {
   console.log(props,'확인')
@@ -13,7 +13,7 @@ const PhotoBox2 = props => {
               <i className="fas fa-thumbtack x"></i>
               <span>저장</span>
             </div>
-            <img src={props.info} />
+            <img src={props.img} />
             <div className="xoxo" />
           </div>
           <div className="imageBelow">

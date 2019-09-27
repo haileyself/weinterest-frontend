@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./PhotoBox.scss";
+import "./PhotoBox2.scss";
 
-const PhotoBox = props => {
-  //const { pin__link } = info;
-  
+const PhotoBox2 = props => {
+  console.log(props,'확인')
+
   return (
     <div className="photoCompo">
-      <Link to={`/detailPage/${props.info.pin__id}`}>
         <figure>
           <div className="xoxoxo">
             <div className="pinButton">
               <i className="fas fa-thumbtack x"></i>
               <span>저장</span>
             </div>
-            <img src={props.info.pin__link} />
+            <img src={props.img} />
             <div className="xoxo" />
           </div>
           <div className="imageBelow">
@@ -22,9 +21,8 @@ const PhotoBox = props => {
             <i className="fas fa-ellipsis-h dotdotdot"></i>
           </div>{" "}
         </figure>
-      </Link>
     </div>
   );
 };
 
-export default PhotoBox;
+export default PhotoBox2;

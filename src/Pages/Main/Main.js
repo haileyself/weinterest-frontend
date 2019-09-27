@@ -15,7 +15,7 @@ class Main extends Component {
         { pins: [] }
       ]
     };
-console.log("main")
+    console.log("main");
     this.token = localStorage.getItem("login_token")
       ? localStorage.getItem("login_token")
       : props.history.push("/login");

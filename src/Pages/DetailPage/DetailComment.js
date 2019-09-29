@@ -5,40 +5,82 @@ import "./Detail.scss";
 class DetailComment extends React.Component {
   constructor() {
     super();
-    this.state = { valueComment: "",commentData:[] };
+    this.state = { 
+                  valueComment: "",
+                  commentData:[],
+                  context: "" 
+                };
+
+    this.token = localStorage.getItem("login_token")
+                  ? localStorage.getItem("login_token")
+                  : this.props.history.push("/login");
   }
-  isComment=(e)=>{
-    fetch("http://10.58.6.27:8000/comments/1", {
+
+  componentDidMount() {
+    // debugger;
+    fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
       method: "GET",
       headers: {
-        "Authorization": "response.access_token"
+        Authorization: this.token,
+        "Content-Type": "application/json"
       }
     })
       .then(response => response.json())
-      .then(response => { console.log(response)
-        fetch("http://10.58.6.27:8000/comments/1", {
-        method: "POST",
+      .then(response => {
+        // debugger;
+        this.setState({ commentData: response.comments });
+      });
+  }
+  
+  isComment=(e)=>{
+    // debugger;
+    this.setState({
+      context: e.target.value,
+    });
+  };
+
+  saveContext = (e) => {
+    // debugger;
+    fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+      method: "POST",
+      headers: {
+        "Authorization": this.token,
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({
+        context: this.state.context,
+        date: "2019-09-26 00:18:41",
+        good: 10,
+        bad: 2
+      })
+    })
+    .then(response => response.json())
+       // debugger;
+       fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+        method: "GET",
         headers: {
-          "Authorization": "response.access_token"
+          Authorization: this.token,
+          "Content-Type": "application/json"
         }
       })
         .then(response => response.json())
-        .then(response =>{console.log(response)
-          this.setState({
-            commentData: response.date
-            
-          })
-        })
-      })
-      this.setState({ valueComment: e.target.value 
-      })
-    };
+        .then(response => {
+          // debugger;
+          this.setState({ commentData: response.comments });
+        });
+  };
+
   render() {
     return (
       <div>
         <div className="commnet_text">질문을 하거나 칭찬을 남겨주세요</div>
         <div>
-          {/* {this.state.commentData.comments && this.state.commentData.comments.map(el=>{return <CommentRI item={el}/>})}  */}
+          {
+            (this.state.commentData.length !== 0)?
+            (this.state.commentData.map(el=>{
+              return <CommentRI item={el}/>
+            })) : ""
+          } 
         </div>
         <div className="comment_box">
           <div className="commen_box_img">
@@ -53,7 +95,7 @@ class DetailComment extends React.Component {
         </div>
         <div className="comment_button_wrap">
           <div
-            onClick={this.isComment}
+            onClick={this.saveContext}
             className={`comment_button ${
               this.state.valueComment ? "comment_button2" : ""
             }`}

@@ -22,7 +22,7 @@ class Login extends React.Component {
   };
 
   onClickLogin = () => {
-    fetch("http://10.58.6.27:8000/users/login", {
+    fetch("http://10.58.0.251:8000/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -49,7 +49,7 @@ class Login extends React.Component {
   };
 
   responseGoogle = response => {
-    fetch("http://10.58.6.27:8000/users/google-login", {
+    fetch("http://10.58.0.251:8000/users/google-login", {
       method: "POST",
       headers: {
         Authorization: response.tokenId
@@ -65,7 +65,7 @@ class Login extends React.Component {
 
   responseKakao = response => {
     console.log("카톡",response);
-    fetch("http://10.58.6.27:8000/users/kakao-login", {
+    fetch("http://10.58.0.251:8000/users/kakao-login", {
       method: "POST",
       headers: {
         Authorization: response.response.access_token

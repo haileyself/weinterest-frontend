@@ -7,8 +7,8 @@ class SignupFinal extends Component {
   constructor() {
     super();
     this.state = {
-      selectedPins: [],
-      choiceTaste: ""
+      allCategory: [],
+      selectedCategory: []
     };
     //debugger;
     this.token = localStorage.getItem("login_token")
@@ -28,14 +28,41 @@ class SignupFinal extends Component {
       .then(response => {
         //console.log("대꾸?", response);
         this.setState({
-          selectedPins: response.categories
+          allCategory: response.categories
         });
       });
   }
 
-  selectMyTaste = e => {
+  makeSelectedCategoryArray(category_id) {
+    let isExistIndex = this.state.selectedCategory.indexOf(category_id);
+
+    if (isExistIndex !== -1) {
+      this.state.selectedCategory.splice(isExistIndex, 1);
+    } else {
+      this.state.selectedCategory.push(category_id);
+    }
+  }
+
+  makeFormateOfUserCategory() {
+    let result = {};
+    // debugger;
+    result.user_categories = [];
+    for (let index = 0; index < this.state.selectedCategory.length; index++) {
+      let category_id = { category_id: this.state.selectedCategory[index] };
+      result.user_categories.push(category_id);
+    }
+
+    // debugger;
+    return result;
+  }
+
+  selectMyTaste = (e, category_id) => {
+    // debugger;
+    this.makeSelectedCategoryArray(category_id);
+
+    //debugger;
     this.setState({
-      choiceTaste: e.target.value
+      selectedCategory: this.state.selectedCategory
     });
     // console.log("값", e.target.value);
   };
@@ -57,25 +84,7 @@ class SignupFinal extends Component {
           "Content-Type": "application/json"
         },
 
-        body: JSON.stringify({
-          user_categories: [
-            {
-              category_id: 3
-            },
-            {
-              category_id: 1
-            },
-            {
-              category_id: 2
-            },
-            {
-              category_id: 4
-            },
-            {
-              category_id: 5
-            }
-          ]
-        })
+        body: JSON.stringify(this.makeFormateOfUserCategory())
       }
     )
       .then(response => response.json())
@@ -116,13 +125,13 @@ class SignupFinal extends Component {
               return <div>{element}</div>;
             })} */}
 
-                  {this.state.selectedPins.map((el, index) => {
+                  {this.state.allCategory.map((el, index) => {
                     return (
                       <TasteCompo
                         key={index}
                         info={el}
-                        //order={el.category_id}
-                        onClinkHandle={this.handleClick}
+                        order={el.category_id}
+                        onClinkHandle={this.selectMyTaste}
                       />
                     );
                   })}

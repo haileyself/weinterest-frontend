@@ -198,11 +198,19 @@
           width: 135px;
           height: 135px;
           border-radius: 10px;
+        }
+        .wrapper {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
           background-color: rgba(0, 0, 0, 0.6);
+          cursor: pointer;
         }
         .imageHover {
           position: absolute;
-          display: none;
+          // background-color: rgba(0, 0, 0, 0.6);
+          //display: none;
           border: 50%;
           border: 1px none;
           top: 10px;

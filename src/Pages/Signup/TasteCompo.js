@@ -21,7 +21,21 @@ class TasteCompo extends Component {
   // };
   constructor(props) {
     super(props);
+
+    this.state = {
+      selected: 0
+    };
   }
+
+  onClickHandler = e => {
+    // debugger;
+    this.setState({
+      selected: !this.state.selected
+    });
+
+    this.props.onClinkHandle(e, this.props.order);
+  };
+
   render() {
     // console.log("배고파", this.props.info);
     //console.log("뭐라도써야겠어", this.props.handleClick);
@@ -29,15 +43,28 @@ class TasteCompo extends Component {
       <>
         <figure>
           <div className="tasteContainer">
-            <div className="imageHover">
-              <img src={CheckImage} alt="check" />
-            </div>
-            <img
-              src={this.props.info.img_url}
-              onClick={this.props.handleClick}
-            />
+            {this.state.selected ? (
+              <div className="wrapper" onClick={this.onClickHandler}>
+                <div className="imageHover">
+                  <img src={CheckImage} alt="check" />
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {/* 
+            {this.state.selected === 1 && (
+              <div className="imageHover">
+                <img src={CheckImage} alt="check" />
+              </div>
+            )} */}
+
+            <img src={this.props.info.img_url} onClick={this.onClickHandler} />
             <p>{this.props.info.title}</p>
-            {/* <div className="toImageHover"></div> */}
+
+            {/* <img src={this.props.info.img_url} onClick={this.onClickHandler} />
+            <p>{this.props.info.title}</p> */}
           </div>
         </figure>
       </>

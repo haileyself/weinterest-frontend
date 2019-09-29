@@ -1,27 +1,25 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PhotoBox from "Components/PhotoBox";
 import data from "Components/PhotoBox/data";
 import "./Main.scss";
 
 class Main extends Component {
+  total_key = 0;
+
   constructor(props) {
     super(props);
     this.state = {
-      mainBox: [
-        { pins: [] },
-        { pins: [] },
-        { pins: [] },
-        { pins: [] },
-        { pins: [] }
-      ]
+      mainBox: []
     };
-    console.log("main");
+    //console.log("main");
     this.token = localStorage.getItem("login_token")
       ? localStorage.getItem("login_token")
       : props.history.push("/login");
   }
 
   componentDidMount() {
+    // debugger;
     fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
       method: "GET",
       headers: {
@@ -31,6 +29,7 @@ class Main extends Component {
     })
       .then(response => response.json())
       .then(response => {
+        // debugger;
         this.setState({ mainBox: response.pins });
       });
   }
@@ -39,22 +38,20 @@ class Main extends Component {
     return (
       <div className="mainContainer">
         <div className="columns">
-          {/* <PhotoBox /> */}
-          {this.state.mainBox[0].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
-          {this.state.mainBox[1].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
-          {this.state.mainBox[2].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
-          {this.state.mainBox[3].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
-          {this.state.mainBox[4].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
+          {this.state.mainBox.length
+            ? this.state.mainBox.map((el, index) => {
+                // debugger;
+                return el.pins.map((pin, pinIndex) => {
+                  return (
+                    <Link to={`/detailPage/${pin.pin__id}`}>
+                      <PhotoBox info={pin} key={this.total_key + pinIndex} />
+                    </Link>
+                  );
+                });
+
+                this.total_key += el.pins.length;
+              })
+            : ""}
         </div>
       </div>
     );

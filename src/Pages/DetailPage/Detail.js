@@ -251,7 +251,7 @@ class Detail extends React.Component {
                   </div>
                   <div>
                     {this.state.activeTap === "imgBox" && <DetailImg />}
-                    {this.state.activeTap === "commentTap" && <DetailComment />}
+                    {this.state.activeTap === "commentTap" && <DetailComment pin_id={this.props.match.params.id} />}
                   </div>
                 </div>
               </div>

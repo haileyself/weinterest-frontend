@@ -3,6 +3,7 @@ import "./Detail.scss";
 
 class CommentRI extends React.Component {
   render() {
+    // debugger;
     return (
       <div>
         <div className="comment_img_wrap">
@@ -17,7 +18,7 @@ class CommentRI extends React.Component {
               <div className="comment_user_name">{this.props.item.nickname}</div>
               <div className="comment_history">{this.props.item.date.substring(0, 10)}</div>
             </div>
-            <div className="user_comment">{this.props.item.content}</div>
+            <div className="user_comment">{this.props.item.context}</div>
           </div>
         </div>
         <div className="comment_icon_wrap">

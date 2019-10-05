@@ -67,7 +67,7 @@ class Detail extends React.Component {
 
   componentDidMount() {
     // console.log(this.props)
-    fetch(`http://10.58.0.251:8000/pins/${this.props.match.params.id}`, {
+    fetch(`http://10.58.6.208:8000/pins/${this.props.match.params.id}`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("login_token")
@@ -80,7 +80,7 @@ class Detail extends React.Component {
         this.setState({isDetailPage:Response});
       });
       
-      fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
+      fetch("http://10.58.6.208:8000/pins?offset=0&limit=50", {
         method: "GET",
         headers: {
           Authorization: this.token,

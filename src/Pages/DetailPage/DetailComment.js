@@ -41,7 +41,7 @@ class DetailComment extends React.Component {
 
   saveContext = (e) => {
     // debugger;
-    fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+    fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
       method: "POST",
       headers: {
         "Authorization": this.token,
@@ -56,7 +56,7 @@ class DetailComment extends React.Component {
     })
     .then(response => response.json())
        // debugger;
-       fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+       fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
         method: "GET",
         headers: {
           Authorization: this.token,

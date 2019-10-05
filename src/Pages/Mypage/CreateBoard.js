@@ -14,8 +14,8 @@ class CreateBoard extends React.Component {
     getValue =(e) => {
         this.setState({
             text: e.target.value
-        })
-    }
+        })  
+    }  
     
     render() {
         // console.log('안녕',this.props);

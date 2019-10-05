@@ -71,6 +71,7 @@ class Signup extends React.Component {
                 onChange={this.changeEmailValue}
               ></input>
               <input
+              type ="password"
                 className="signup_PW"
                 placeholder="비밀번호"
                 onChange={this.changePwValue}

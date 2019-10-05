@@ -20,7 +20,7 @@ class Main extends Component {
 
   componentDidMount() {
     // debugger;
-    fetch("http://10.58.0.251:8000/pins?offset=0&limit=50", {
+    fetch("http://10.58.6.208:8000/pins?offset=0&limit=50", {
       method: "GET",
       headers: {
         Authorization: this.token,
@@ -38,8 +38,8 @@ class Main extends Component {
     return (
       <div className="mainContainer">
         <div className="columns">
-          {this.state.mainBox.length
-            ? this.state.mainBox.map((el, index) => {
+            {this.state.mainBox &&
+              this.state.mainBox.map((el, index) => {
                 // debugger;
                 return el.pins.map((pin, pinIndex) => {
                   return (
@@ -51,7 +51,7 @@ class Main extends Component {
 
                 this.total_key += el.pins.length;
               })
-            : ""}
+            }
         </div>
       </div>
     );

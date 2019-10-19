@@ -13,9 +13,10 @@ const PhotoBox = props => {
 
   //console.log(Boolean(board), "ssss");
   //console.log("wwww", props.name);
+
   return (
     <>
-      {board ? <PinSave handleClick={showBoard} /> : null}
+      {board ? <PinSave handleClick={showBoard} pin={props.info} /> : null}
 
       <div className="photoCompo">
         <figure>
@@ -25,7 +26,7 @@ const PhotoBox = props => {
               <span>저장</span>
             </div>
             <img src={props.info.pin__link} />
-            <Link to={props.name}>
+            <Link to={`/detailPage/${props.info.pin__id}`}>
               <div className="xoxo" />
             </Link>
           </div>

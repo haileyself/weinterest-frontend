@@ -1,4 +1,5 @@
 import React from "react";
+import "./DetailSaveBox.scss";
 
 class DetailSaveBox extends React.Component {
   render() {

@@ -22,7 +22,7 @@ class Login extends React.Component {
   };
 
   onClickLogin = () => {
-    fetch("http://10.58.6.208:8000/users/login", {
+    fetch("http://10.58.6.208:8001/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -34,12 +34,14 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("나다",response)
+        console.log("나다", response);
         if (response.access_token) {
           localStorage.setItem("login_token", response.access_token);
           this.props.history.push("/");
-          window.location.reload(true)
-        }else{alert("일치하지않습니다")}
+          window.location.reload(true);
+        } else {
+          alert("일치하지않습니다");
+        }
       });
     if (this.state.valueId === "") {
       this.setState({ valueId: "change" });
@@ -49,7 +51,7 @@ class Login extends React.Component {
   };
 
   responseGoogle = response => {
-    fetch("http://10.58.6.208:8000/users/google-login", {
+    fetch("http://10.58.6.208:8001/users/google-login", {
       method: "POST",
       headers: {
         Authorization: response.tokenId
@@ -58,13 +60,13 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(response => {
         localStorage.setItem("login_token", response.access_token);
-      this.props.history.push("/");
-      window.location.reload(false)
+        this.props.history.push("/");
+        window.location.reload(false);
       });
   };
 
   responseKakao = response => {
-    console.log("카톡",response);
+    console.log("카톡", response);
     fetch("http://10.58.6.208:8000/users/kakao-login", {
       method: "POST",
       headers: {
@@ -73,8 +75,8 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("반응",response)
-        console.log(this.props)
+        console.log("반응", response);
+        console.log(this.props);
         localStorage.setItem("login_token", response.access_token);
         this.props.history.push("/");
         //  window.location.reload(false)

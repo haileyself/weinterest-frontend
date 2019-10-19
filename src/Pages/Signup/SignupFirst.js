@@ -22,7 +22,7 @@ class SignupFirst extends Component {
   }
   componentDidMount() {
     //console.log("여기에!", this.props);
-    fetch("http://10.58.6.208:8000/countries", {
+    fetch("http://10.58.7.49:8000/contries", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -36,7 +36,7 @@ class SignupFirst extends Component {
         });
       });
 
-    fetch("http://10.58.6.208:8000/languages", {
+    fetch("http://10.58.7.49:8000/languages", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

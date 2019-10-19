@@ -67,7 +67,7 @@ class Detail extends React.Component {
 
   componentDidMount() {
     // console.log(this.props)
-    fetch(`http://10.58.6.208:8000/pins/${this.props.match.params.id}`, {
+    fetch(`http://10.58.7.49:8000/pins/${this.props.match.params.id}`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("login_token")
@@ -80,7 +80,7 @@ class Detail extends React.Component {
         this.setState({isDetailPage:Response});
       });
       
-      fetch("http://10.58.6.208:8000/pins?offset=0&limit=50", {
+      fetch("http://10.58.7.49:8000/pins?offset=0&limit=50", {
         method: "GET",
         headers: {
           Authorization: this.token,
@@ -105,7 +105,7 @@ class Detail extends React.Component {
       <div className="detail_body">
         <div className="detail_wrap">
           <div onClick={this.pageBack} className="detail_back_button">
-            <i className="fas fa-arrow-left back"></i>
+            {/* <i className="fas fa-arrow-left back"></i> */}
           </div>
           <div className="detail_main_page">
             <div className="detail_main_page_top">
@@ -258,7 +258,7 @@ class Detail extends React.Component {
             </div>
           </div>
           <div onClick={this.pageBack} className="detail_wrap_exit ">
-            <i className="fas fa-times img"></i>
+            {/* <i className="fas fa-times img"></i> */}
           </div>
         </div>
         <div className="detail_similar_title">유사한 핀 더보기</div>

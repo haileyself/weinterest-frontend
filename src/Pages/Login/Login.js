@@ -11,18 +11,14 @@ class Login extends React.Component {
     this.state = { valueId: "", valuePW: "" };
   }
 
-  inputValueId = e => {
-    this.setState({ valueId: e.target.value });
-  };
-  inputValuePW = e => {
-    this.setState({ valuePW: e.target.value });
-  };
-  signupMove = () => {
-    this.props.history.push("signup");
+  inputValueInfo = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   onClickLogin = () => {
-    fetch("http://10.58.6.208:8000/users/login", {
+    fetch("http://10.58.7.49:8000/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -84,8 +80,11 @@ class Login extends React.Component {
   responseFail = err => {
     console.log(err);
   };
+  signupMove=()=>{
+    this.props.history.push("/signup");}
 
   render() {
+    // console.log(this.state);
     return (
       <div>
         <div className="login_wrap">
@@ -101,7 +100,8 @@ class Login extends React.Component {
               </div>
               <div className="Login_title">Welcome to pinterest</div>
               <input
-                onChange={this.inputValueId}
+                name="valueId"
+                onChange={this.inputValueInfo}
                 className={`Login_input ${
                   this.state.valueId === "change" ? "input_change" : ""
                 }`}
@@ -113,7 +113,8 @@ class Login extends React.Component {
                 </div>
               )}
               <input
-                onChange={this.inputValuePW}
+                name="valuePW"
+                onChange={this.inputValueInfo}
                 className={`Login_input2 ${
                   this.state.valuePW === "change2" ? "input_change" : ""
                 }`}

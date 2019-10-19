@@ -20,7 +20,7 @@ class Main extends Component {
 
   componentDidMount() {
     // debugger;
-    fetch("http://10.58.6.208:8000/pins?offset=0&limit=50", {
+    fetch("http://10.58.7.49:8000/pins?offset=0&limit=50", {
       method: "GET",
       headers: {
         Authorization: this.token,

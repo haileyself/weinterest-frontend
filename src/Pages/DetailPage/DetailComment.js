@@ -54,7 +54,7 @@ class DetailComment extends React.Component {
         bad: 2
       })
     })
-    .then(response => response.json())
+    .then(response =>  response.json())
        // debugger;
        fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
         method: "GET",
@@ -64,7 +64,7 @@ class DetailComment extends React.Component {
         }
       })
         .then(response => response.json())
-        .then(response => {
+        .then(response => {console.log("나는 누구인가",response)
           // debugger;
           this.setState({ commentData: response.comments });
         });

@@ -1,0 +1,124 @@
+.grayout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+
+  .boardWrap {
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 800px;
+    height: 730px;
+    @media screen and (min-width: 1450px) {
+      width: 780px;
+    }
+  }
+  .boardContain {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+
+    p {
+      text-align: center;
+      padding: 20px 50px;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    div {
+      position: absolute;
+      top: 20px;
+      right: 26px;
+
+      .closedIcon {
+        font-size: 26px;
+        color: #8e8e8e;
+        cursor: pointer;
+      }
+    }
+  }
+  .boardBelow {
+    display: flex;
+  }
+  .leftPortion {
+    border-right: 1px solid #efefef;
+    width: 40%;
+    height: 658px;
+  }
+  .picFollow {
+    width: 100%;
+    margin: 12px 0 0;
+    padding: 0 40px;
+    img {
+      width: 100%;
+    }
+  }
+  .rightPortion {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0;
+    width: 60%;
+
+    // div {
+    // }
+    .boardExist,
+    .makeBoard {
+      width: 100%;
+      padding: 15px 0 15px 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      &:hover {
+        background-color: #efefef;
+      }
+    }
+
+    .boardExist {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #efefef;
+
+      div {
+        border-radius: 5px;
+        margin-right: 10px;
+        width: 40px;
+        line-height: 0;
+      }
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+    .makeBoard {
+      display: flex;
+      align-items: center;
+
+      div {
+        display: flex;
+        justify-content: center;
+        margin-right: 10px;
+        width: 40px;
+      }
+      .plusIcon {
+        font-size: 28px;
+        color: red;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}

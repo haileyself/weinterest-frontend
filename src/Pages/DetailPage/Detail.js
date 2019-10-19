@@ -9,7 +9,7 @@ import miniData from "./DatailDb";
 import "./Detail.scss";
 
 class Detail extends React.Component {
-  constructor(props) { 
+  constructor(props) {
     super(props);
     this.state = {
       activeTap: "imgBox",
@@ -30,12 +30,12 @@ class Detail extends React.Component {
       : props.history.push("/login");
   }
 
-  checkCategoryId = (pin_id) => {
+  checkCategoryId = pin_id => {
     let defaultId = 0;
     // debugger;
-    for (let index=0; index<this.state.mainBox.length; index++){
-      for(let i=0; i<this.state.mainBox[index].pins.length; i++){
-        if(pin_id === this.state.mainBox[index].pins[i].pin__id){
+    for (let index = 0; index < this.state.mainBox.length; index++) {
+      for (let i = 0; i < this.state.mainBox[index].pins.length; i++) {
+        if (pin_id === this.state.mainBox[index].pins[i].pin__id) {
           // debugger;
 
           return index;
@@ -67,7 +67,7 @@ class Detail extends React.Component {
 
   componentDidMount() {
     // console.log(this.props)
-    fetch(`http://10.58.6.208:8000/pins/${this.props.match.params.id}`, {
+    fetch(`http://10.58.6.208:8001/pins/${this.props.match.params.id}`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("login_token")
@@ -77,29 +77,29 @@ class Detail extends React.Component {
       .then(Response => {
         //console.log("반응",Response)
         // debugger;
-        this.setState({isDetailPage:Response});
+        this.setState({ isDetailPage: Response });
       });
-      
-      fetch("http://10.58.6.208:8000/pins?offset=0&limit=50", {
-        method: "GET",
-        headers: {
-          Authorization: this.token,
-          "Content-Type": "application/json"
-        }
-      })
-        .then(response => response.json())
-        .then(response => {
-          // debugger;
-          this.setState({ mainBox: response.pins });
-        });
+
+    fetch("http://10.58.6.208:8001/pins?offset=0&limit=50", {
+      method: "GET",
+      headers: {
+        Authorization: this.token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        // debugger;
+        this.setState({ mainBox: response.pins });
+      });
   }
   render() {
     // console.log("이거이거", this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url)
     let pin_id = -1;
-    if('pin_info' in this.state.isDetailPage){
+    if ("pin_info" in this.state.isDetailPage) {
       pin_id = this.state.isDetailPage.pin_info[0].pin_id;
     }
-    
+
     let categoryID = this.checkCategoryId(pin_id);
     return (
       <div className="detail_body">
@@ -150,7 +150,7 @@ class Detail extends React.Component {
                         </div>
                         <div className="changeImg_title">최고 보드 제안</div>
                         {miniData.map((el, i) => (
-                          <DetailSaveBox img={el}key={i} />
+                          <DetailSaveBox img={el} key={i} />
                         ))}
                       </div>
                       <div className="changeImg_1">
@@ -181,7 +181,12 @@ class Detail extends React.Component {
               <a href={Data.link}>
                 <div className="detail_main_page_box_img">
                   {/* <img src={Data.img}/> */}
-                  <img src={this.state.isDetailPage.pin_info && this.state.isDetailPage.pin_info[0].pin_url}></img>
+                  <img
+                    src={
+                      this.state.isDetailPage.pin_info &&
+                      this.state.isDetailPage.pin_info[0].pin_url
+                    }
+                  ></img>
                   <div className="img_text_wrap">
                     <div className="img_box">
                       <i class="fas fa-location-arrow"></i>
@@ -251,7 +256,9 @@ class Detail extends React.Component {
                   </div>
                   <div>
                     {this.state.activeTap === "imgBox" && <DetailImg />}
-                    {this.state.activeTap === "commentTap" && <DetailComment pin_id={this.props.match.params.id} />}
+                    {this.state.activeTap === "commentTap" && (
+                      <DetailComment pin_id={this.props.match.params.id} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -264,9 +271,9 @@ class Detail extends React.Component {
         <div className="detail_similar_title">유사한 핀 더보기</div>
         <div className="detail_similar_img_box">
           <div className="detail_similar_img">
-          {this.state.mainBox[categoryID].pins.map((el, i) => (
-            <PhotoBox info={el} key={i} />
-          ))}
+            {this.state.mainBox[categoryID].pins.map((el, i) => (
+              <PhotoBox info={el} key={i} />
+            ))}
           </div>
         </div>
       </div>

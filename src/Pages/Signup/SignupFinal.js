@@ -18,7 +18,7 @@ class SignupFinal extends Component {
 
   componentDidMount() {
     //console.log("마지막페이지", this.state.selectedPins);
-    fetch("http://10.58.6.208:8000/category", {
+    fetch("http://10.58.6.208:8001/category", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -45,8 +45,9 @@ class SignupFinal extends Component {
 
   makeFormateOfUserCategory() {
     let result = {};
-    // debugger;
+
     result.user_categories = [];
+
     for (let index = 0; index < this.state.selectedCategory.length; index++) {
       let category_id = { category_id: this.state.selectedCategory[index] };
       result.user_categories.push(category_id);
@@ -57,10 +58,8 @@ class SignupFinal extends Component {
   }
 
   selectMyTaste = (e, category_id) => {
-    // debugger;
     this.makeSelectedCategoryArray(category_id);
 
-    //debugger;
     this.setState({
       selectedCategory: this.state.selectedCategory
     });
@@ -74,7 +73,7 @@ class SignupFinal extends Component {
   finalButton = () => {
     //debugger;
     fetch(
-      "http://10.58.6.208:8000/category/user-category",
+      "http://10.58.6.208:8001/category/user-category",
 
       {
         method: "POST",
@@ -93,6 +92,7 @@ class SignupFinal extends Component {
         //debugger;
         if (response.message === "USER_CAGEGORY_UPDATE") {
           this.props.history.push("/");
+          window.location.reload(true);
         }
       });
   };
@@ -137,11 +137,9 @@ class SignupFinal extends Component {
                   })}
                 </div>
                 <div className="boxWrap">
-                  {/* <a href="/"> */}
                   <div className="finishStage" onClick={this.finalButton}>
                     완료
                   </div>
-                  {/* </a> */}
                 </div>
               </div>
             </div>

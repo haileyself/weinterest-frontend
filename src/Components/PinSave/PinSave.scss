@@ -76,29 +76,95 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      &:hover {
-        background-color: #efefef;
-      }
+
+      // &:hover {
+      //   background-color: #efefef;
+      // }
     }
 
     .boardExist {
-      display: flex;
-      align-items: center;
+      position: relative;
+      // display: flex;
+      // align-items: center;
+      // flex-direction: column;
+      justify-content: flex-start;
       border-bottom: 1px solid #efefef;
+      //border: 1px solid black;
 
-      div {
+      .ct_choice_order {
+        // display: flex;
+        // justify-content: flex-start;
+        width: 80%;
+        // margin-left: 20px;
+        // padding-right: 14px;
+      }
+
+      .choice_order {
+        width: 100%;
+        height: 42px;
+        background-color: #ffffff;
+        border: 1px solid #8e8e8e;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 0 10px;
+        letter-spacing: -0.4px;
+        -webkit-appearance: none;
+        background-image: url("/src/arrow.png");
+      }
+
+      .linedUp {
+        //border: 1px solid red;
+        display: flex;
+        align-items: center;
+        margin: 5px;
+      }
+      .boardName {
         border-radius: 5px;
         margin-right: 10px;
         width: 40px;
+        height: 40px;
         line-height: 0;
       }
+
       img {
         width: 100%;
         border-radius: 5px;
       }
-      p {
+
+      .boardList {
         font-size: 16px;
         font-weight: 600;
+      }
+    }
+    .pinButton {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 15px;
+      right: 7px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #e83e33;
+      color: white;
+
+      //visibility: hidden;
+
+      &:hover {
+        background-color: #d1372d;
+      }
+      &:hover .pinButton {
+        z-index: 5;
+        visibility: visible;
+        cursor: pointer;
+      }
+      .icon {
+        font-size: 16px;
+        margin: 2px;
+      }
+      .saveBtn {
+        font-size: 14px;
+        margin: 2px;
+        font-weight: 700;
       }
     }
     .makeBoard {

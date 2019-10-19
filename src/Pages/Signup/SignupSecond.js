@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "../../Images/Logo.png";
 import Arrow from "Images/arrow.png";
+import { API_IP } from "Common";
 import data from "./data";
 import "./Signup.scss";
 

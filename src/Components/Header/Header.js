@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderCompo from "./HeaderCompo";
 import Logo from "Images/Logo.png";
+import { API_IP } from "Common";
 import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 
@@ -10,12 +11,31 @@ class Header extends Component {
     this.state = {
       text: "",
       tagList: [],
+      profile: null,
       headerToggle: false
     };
 
-    this.getToken = localStorage.getItem("login_token");
+    this.token = localStorage.getItem("login_token");
   }
 
+  componentDidMount() {
+    // 예외처리
+    if (this.token === null) return;
+
+    fetch(`${API_IP}/users/profile`, {
+      method: "GET",
+      headers: {
+        Authorization: this.token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          profile: response
+        });
+      });
+  }
   onModal = e => {
     this.setState({ headerToggle: !this.state.headerToggle });
   };
@@ -82,7 +102,9 @@ class Header extends Component {
             </a>
             <div className="home_2">팔로잉</div>
             <a href="/mypage">
-              <div className="home_3">hyemin</div>
+              <div className="home_3">
+                {this.state.profile && this.state.profile.user.nickname}
+              </div>
             </a>
           </div>
           <div className="theRestOf">
@@ -90,7 +112,7 @@ class Header extends Component {
             <div className="restWrap">
               <i className="fas fa-comment-dots msgIcon"></i>
               <i className="fas fa-bell alertIcon"></i>
-              {this.getToken ? (
+              {this.token ? (
                 <Link to="/">
                   <div onClick={this.logout} className="loginIcon">
                     Logout

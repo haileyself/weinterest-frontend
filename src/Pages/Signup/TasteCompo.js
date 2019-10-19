@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CheckImage from "Images/CheckImage.png";
+import images from "Images/images.png";
 import "./Signup.scss";
 
 // const TasteCompo = ({ info = {} }) => {
@@ -46,7 +46,7 @@ class TasteCompo extends Component {
             {this.state.selected ? (
               <div className="wrapper" onClick={this.onClickHandler}>
                 <div className="imageHover">
-                  <img src={CheckImage} alt="check" />
+                  <img src={images} alt="check" />
                 </div>
               </div>
             ) : (

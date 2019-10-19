@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../Images/Logo.png";
 import GoogleLogin from "react-google-login";
 import KakaoLogin from "react-kakao-login";
+import { API_IP } from "Common";
 import "./Login.scss";
 // import { resolve } from "url";
 
@@ -22,7 +23,7 @@ class Login extends React.Component {
   };
 
   onClickLogin = () => {
-    fetch("http://10.58.6.208:8001/users/login", {
+    fetch(`${API_IP}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -51,7 +52,7 @@ class Login extends React.Component {
   };
 
   responseGoogle = response => {
-    fetch("http://10.58.6.208:8001/users/google-login", {
+    fetch(`${API_IP}//users/google-login`, {
       method: "POST",
       headers: {
         Authorization: response.tokenId
@@ -67,7 +68,7 @@ class Login extends React.Component {
 
   responseKakao = response => {
     console.log("카톡", response);
-    fetch("http://10.58.6.208:8000/users/kakao-login", {
+    fetch(`${API_IP}/users/kakao-login`, {
       method: "POST",
       headers: {
         Authorization: response.response.access_token

@@ -3,12 +3,13 @@ import CommentRI from "./CommentRI";
 import "./Detail.scss";
 
 class DetailComment extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { 
                   valueComment: "",
                   commentData:[],
                   context: "" 
+                  ,props_id:this.props.pin_id
                 };
 
     this.token = localStorage.getItem("login_token")
@@ -17,8 +18,9 @@ class DetailComment extends React.Component {
   }
 
   componentDidMount() {
+    
     // debugger;
-    fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+    fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
       method: "GET",
       headers: {
         Authorization: this.token,
@@ -30,6 +32,7 @@ class DetailComment extends React.Component {
         // debugger;
         this.setState({ commentData: response.comments });
       });
+      this.saveContext()
   }
   
   isComment=(e)=>{
@@ -41,7 +44,7 @@ class DetailComment extends React.Component {
 
   saveContext = (e) => {
     // debugger;
-    fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
+    fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
       method: "POST",
       headers: {
         "Authorization": this.token,
@@ -49,14 +52,14 @@ class DetailComment extends React.Component {
       },
       body:JSON.stringify({
         context: this.state.context,
-        date: "2019-09-26 00:18:41",
+        date: new Date(),
         good: 10,
         bad: 2
       })
     })
     .then(response =>  response.json())
        // debugger;
-       fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
+       fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
         method: "GET",
         headers: {
           Authorization: this.token,
@@ -65,8 +68,8 @@ class DetailComment extends React.Component {
       })
         .then(response => response.json())
         .then(response => {console.log("나는 누구인가",response)
-          // debugger;
           this.setState({ commentData: response.comments });
+          // window.location.reload();
         });
   };
 
@@ -78,7 +81,7 @@ class DetailComment extends React.Component {
           {
             (this.state.commentData.length !== 0)?
             (this.state.commentData.map(el=>{
-              return <CommentRI item={el}/>
+              return <CommentRI id={this.state.props_id}item={el}/>
             })) : ""
           } 
         </div>

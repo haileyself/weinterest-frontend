@@ -1,29 +1,41 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PinSave from "Components/PinSave";
 import "./PhotoBox.scss";
 
 const PhotoBox = props => {
-  //const { pin__link } = info;
+  const [board, setBoard] = useState(false);
 
+  const showBoard = () => {
+    setBoard(!board);
+  };
+
+  //console.log(Boolean(board), "ssss");
+  //console.log("wwww", props.name);
   return (
-    <div className="photoCompo">
-      {/* <Link to={`/detailPage/${props.info.pin__id}`}> */}
-      <figure>
-        <div className="xoxoxo">
-          <div className="pinButton">
-            <i className="fas fa-thumbtack x"></i>
-            <span>저장</span>
+    <>
+      {board ? <PinSave handleClick={showBoard} /> : null}
+
+      <div className="photoCompo">
+        <figure>
+          <div className="xoxoxo">
+            <div className="pinButton" onClick={showBoard}>
+              <i className="fas fa-thumbtack x"></i>
+              <span>저장</span>
+            </div>
+            <img src={props.info.pin__link} />
+            <Link to={props.name}>
+              <div className="xoxo" />
+            </Link>
           </div>
-          <img src={props.info.pin__link} />
-          <div className="xoxo" />
-        </div>
-        <div className="imageBelow">
-          <p>추천 핀</p>
-          <i className="fas fa-ellipsis-h dotdotdot"></i>
-        </div>{" "}
-      </figure>
-      {/* </Link> */}
-    </div>
+          <div className="imageBelow">
+            <p>추천 핀</p>
+            <i className="fas fa-ellipsis-h dotdotdot"></i>
+          </div>{" "}
+        </figure>
+      </div>
+    </>
   );
 };
 

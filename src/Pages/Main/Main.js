@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import PhotoBox from "Components/PhotoBox";
-import data from "Components/PhotoBox/data";
 import "./Main.scss";
 
 class Main extends Component {
@@ -10,17 +9,18 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainBox: []
+      mainBox: null
     };
-    //console.log("main");
+
     this.token = localStorage.getItem("login_token")
       ? localStorage.getItem("login_token")
       : props.history.push("/login");
   }
 
   componentDidMount() {
-    // debugger;
+
     fetch("http://10.58.7.49:8000/pins?offset=0&limit=50", {
+
       method: "GET",
       headers: {
         Authorization: this.token,
@@ -29,7 +29,6 @@ class Main extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        // debugger;
         this.setState({ mainBox: response.pins });
       });
   }
@@ -38,20 +37,25 @@ class Main extends Component {
     return (
       <div className="mainContainer">
         <div className="columns">
-            {this.state.mainBox &&
-              this.state.mainBox.map((el, index) => {
-                // debugger;
-                return el.pins.map((pin, pinIndex) => {
-                  return (
-                    <Link to={`/detailPage/${pin.pin__id}`}>
-                      <PhotoBox info={pin} key={this.total_key + pinIndex} />
-                    </Link>
-                  );
-                });
+          {this.state.mainBox &&
+            this.state.mainBox.map((el, index) => {
+              return el.pins.map((pin, pinIndex) => {
+                //console.log("엘이닷", el);
+                //console.log("핀이닷", pin);
 
-                this.total_key += el.pins.length;
-              })
-            }
+                return (
+                  // <Link to={`/detailPage/${pin.pin__id}`}>
+                  <PhotoBox
+                    info={pin}
+                    key={this.total_key + pinIndex}
+                    name={`/detailPage/${pin.pin__id}`}
+                  />
+                  // </Link>
+                );
+              });
+
+              this.total_key += el.pins.length;
+            })}
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ import Data from "./DetailData";
 import data from "Components/PhotoBox/data";
 import DetailSaveBox from "./DetailSaveBox";
 import miniData from "./DatailDb";
+import { API_IP } from "Common";
 import "./Detail.scss";
 
 class Detail extends React.Component {
@@ -66,8 +67,9 @@ class Detail extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`http://10.58.7.49:8000/pins/${this.props.match.params.id}`, {
 
+    // console.log(this.props)
+    fetch(`${API_IP}/pins/${this.props.match.params.id}`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("login_token")
@@ -80,7 +82,7 @@ class Detail extends React.Component {
         this.setState({ isDetailPage: Response });
       });
 
-    fetch("http://10.58.6.208:8001/pins?offset=0&limit=50", {
+    fetch(`${API_IP}/pins?offset=0&limit=50`, {
       method: "GET",
       headers: {
         Authorization: this.token,

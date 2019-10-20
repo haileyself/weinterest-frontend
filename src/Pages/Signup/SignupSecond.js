@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "../../Images/Logo.png";
 import Arrow from "Images/arrow.png";
+import { API_IP } from "Common";
 import data from "./data";
 import "./Signup.scss";
 
@@ -23,7 +24,7 @@ class SignupSecond extends Component {
     // console.log("두번째페이지", this.props);
     //앞페이지에서 보낸 props가 들어왔는 지 콘솔찍어봄
 
-    fetch("http://10.58.6.208:8001/genders", {
+    fetch(`${API_IP}/genders`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -50,7 +51,7 @@ class SignupSecond extends Component {
       alert("선택 부탁 드립니다>_<");
     }
     //console.log("호잇", this.props);
-    fetch("http://10.58.6.208:8001/users/sign-up", {
+    fetch(`${API_IP}/users/sign-up`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

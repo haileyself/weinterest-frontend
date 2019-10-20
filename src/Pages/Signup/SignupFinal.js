@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TasteCompo from "./TasteCompo";
+import { API_IP } from "Common";
 import data from "./data";
 import "./Signup.scss";
 
@@ -10,7 +11,7 @@ class SignupFinal extends Component {
       allCategory: [],
       selectedCategory: []
     };
-    //debugger;
+
     this.token = localStorage.getItem("login_token")
       ? localStorage.getItem("login_token")
       : "";
@@ -18,7 +19,7 @@ class SignupFinal extends Component {
 
   componentDidMount() {
     //console.log("마지막페이지", this.state.selectedPins);
-    fetch("http://10.58.6.208:8001/category", {
+    fetch(`${API_IP}/category`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -44,6 +45,7 @@ class SignupFinal extends Component {
   }
 
   makeFormateOfUserCategory() {
+    //위에 배열로 담은 걸 json형태로 바꾸는 과정
     let result = {};
 
     result.user_categories = [];
@@ -73,7 +75,7 @@ class SignupFinal extends Component {
   finalButton = () => {
     //debugger;
     fetch(
-      "http://10.58.6.208:8001/category/user-category",
+      `${API_IP}/category/user-category`,
 
       {
         method: "POST",

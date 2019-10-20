@@ -6,29 +6,16 @@ class CommentRI extends React.Component {
     super(props)
     this.state={
       toggle:true,
-      id:this.props.id
+      id:this.props.id,
+
    }
   }
   reviseDelete=()=>{
     this.setState({toggle:!this.state.toggle})
-    console.log(this.state.toggle)
+
     
   }
 
-  delete=()=>{ 
-    fetch(`http://10.58.7.49:8000/comments?comment_id=${63}`, {
-    method: "Delete",
-    headers: {
-      Authorization: this.token,
-      "Content-Type": "application/json"
-    }
-  })
-    .then(response => response.json())
-    .then(response => {console.log("저는요",response)
-      this.setState({ commentData: response.comments });
-      // window.location.reload();
-    });
-  }
   revise=()=>{ 
     fetch(`http://10.58.7.49:8000/comments/${this.state.id}`, {
     method: "GET",
@@ -76,7 +63,7 @@ class CommentRI extends React.Component {
           <div onClick={this.reviseDelete} className="icon3">
            {this.state.toggle === false ?<div className="revise_delete">
               <div onClick={this.revise} className="item first">수정</div>
-              <div onClick={this.delete} className="item">삭제</div>
+              <div onClick={()=>this.props.delete(this.state.id)} className="item">삭제</div>
             </div>:""} 
             <i className="fas fa-ellipsis-h"></i>
           </div>

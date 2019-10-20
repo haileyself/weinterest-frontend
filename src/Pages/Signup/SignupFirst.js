@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API_IP } from "Common";
 import logo from "../../Images/Logo.png";
 import Arrow from "Images/arrow.png";
 import data from "./data";
@@ -23,7 +24,7 @@ class SignupFirst extends Component {
   componentDidMount() {
     //console.log("여기에!", this.props);
 
-    fetch("http://10.58.6.208:8001/countries", {
+    fetch(`${API_IP}/countries`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -38,7 +39,7 @@ class SignupFirst extends Component {
       });
 
 
-    fetch("http://10.58.6.208:8001/languages", {
+    fetch(`${API_IP}/languages`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

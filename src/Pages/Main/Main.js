@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import PhotoBox from "Components/PhotoBox";
+import { API_IP } from "Common";
 import "./Main.scss";
 
 class Main extends Component {
@@ -19,8 +20,7 @@ class Main extends Component {
 
   componentDidMount() {
 
-    fetch("http://10.58.7.49:8000/pins?offset=0&limit=50", {
-
+    fetch(`${API_IP}/pins?offset=0&limit=50`, {
       method: "GET",
       headers: {
         Authorization: this.token,
@@ -48,7 +48,7 @@ class Main extends Component {
                   <PhotoBox
                     info={pin}
                     key={this.total_key + pinIndex}
-                    name={`/detailPage/${pin.pin__id}`}
+                    // name={`/detailPage/${pin.pin__id}`}
                   />
                   // </Link>
                 );

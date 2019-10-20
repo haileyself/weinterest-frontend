@@ -29,10 +29,9 @@ class DetailComment extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        // debugger;
+        console.log("뿌려지는걱",response)
         this.setState({ commentData: response.comments });
       });
-      this.saveContext()
   }
   
   isComment=(e)=>{
@@ -59,21 +58,56 @@ class DetailComment extends React.Component {
     })
     .then(response =>  response.json())
        // debugger;
-       fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
+      //  fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
+      //   method: "GET",
+      //   headers: {
+      //     Authorization: this.token,
+      //     "Content-Type": "application/json"
+      //   }
+      // })
+        .then(response => 
+          {
+        fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
+          method: "GET",
+          headers: {
+            Authorization: this.token,
+            "Content-Type": "application/json"
+          }
+        })
+        .then(response => response.json())
+           .then(response => {
+          this.setState({ commentData: response.comments ,context:""});
+        })
+ 
+      });
+  };
+  delete=(id)=>{ 
+    fetch(`http://10.58.7.49:8000/comments/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: localStorage.getItem("login_token"),
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(response => {
+      // if(response.status === 200){
+        fetch(`http://10.58.7.49:8000/comments/${this.state.props_id}`, {
         method: "GET",
         headers: {
-          Authorization: this.token,
+          Authorization: localStorage.getItem("login_token"),
           "Content-Type": "application/json"
         }
       })
-        .then(response => response.json())
-        .then(response => {console.log("나는 누구인가",response)
-          this.setState({ commentData: response.comments });
-          // window.location.reload();
-        });
-  };
+      .then(response => response.json())
+         .then(response => {
+        this.setState({ commentData: response.comments });
+      })
+ 
+    });
+  }
 
-  render() {
+  render() {console.log(this.state.props_id)
     return (
       <div>
         <div className="commnet_text">질문을 하거나 칭찬을 남겨주세요</div>
@@ -81,7 +115,8 @@ class DetailComment extends React.Component {
           {
             (this.state.commentData.length !== 0)?
             (this.state.commentData.map(el=>{
-              return <CommentRI id={this.state.props_id}item={el}/>
+              console.log(el.comment_id)
+              return <CommentRI id={el.comment_id}item={el} data={this.state.props_id} delete={this.delete}/>
             })) : ""
           } 
         </div>
@@ -94,6 +129,7 @@ class DetailComment extends React.Component {
             onChange={this.isComment}
             placeholder="댓글 추가"
             className="comment_box_input"
+            value={this.state.context}
           ></input>
         </div>
         <div className="comment_button_wrap">

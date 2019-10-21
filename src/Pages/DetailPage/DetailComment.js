@@ -57,14 +57,6 @@ class DetailComment extends React.Component {
       })
     })
     .then(response =>  response.json())
-       // debugger;
-      //  fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
-      //   method: "GET",
-      //   headers: {
-      //     Authorization: this.token,
-      //     "Content-Type": "application/json"
-      //   }
-      // })
         .then(response => 
           {
         fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {

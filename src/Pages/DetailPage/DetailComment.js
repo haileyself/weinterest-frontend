@@ -3,12 +3,13 @@ import CommentRI from "./CommentRI";
 import "./Detail.scss";
 
 class DetailComment extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { 
                   valueComment: "",
                   commentData:[],
                   context: "" 
+                  ,props_id:this.props.pin_id
                 };
 
     this.token = localStorage.getItem("login_token")
@@ -17,8 +18,9 @@ class DetailComment extends React.Component {
   }
 
   componentDidMount() {
+    
     // debugger;
-    fetch(`http://10.58.0.251:8000/comments/${this.props.pin_id}`, {
+    fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
       method: "GET",
       headers: {
         Authorization: this.token,
@@ -27,7 +29,7 @@ class DetailComment extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        // debugger;
+        console.log("뿌려지는걱",response)
         this.setState({ commentData: response.comments });
       });
   }
@@ -41,7 +43,7 @@ class DetailComment extends React.Component {
 
   saveContext = (e) => {
     // debugger;
-    fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
+    fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
       method: "POST",
       headers: {
         "Authorization": this.token,
@@ -49,28 +51,55 @@ class DetailComment extends React.Component {
       },
       body:JSON.stringify({
         context: this.state.context,
-        date: "2019-09-26 00:18:41",
+        date: new Date(),
         good: 10,
         bad: 2
       })
     })
+    .then(response =>  response.json())
+        .then(response => 
+          {
+        fetch(`http://10.58.7.49:8000/comments/${this.props.pin_id}`, {
+          method: "GET",
+          headers: {
+            Authorization: this.token,
+            "Content-Type": "application/json"
+          }
+        })
+        .then(response => response.json())
+           .then(response => {
+          this.setState({ commentData: response.comments ,context:""});
+        })
+ 
+      });
+  };
+  delete=(id)=>{ 
+    fetch(`http://10.58.7.49:8000/comments/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: localStorage.getItem("login_token"),
+      "Content-Type": "application/json"
+    }
+  })
     .then(response => response.json())
-       // debugger;
-       fetch(`http://10.58.6.208:8000/comments/${this.props.pin_id}`, {
+    .then(response => {
+      // if(response.status === 200){
+        fetch(`http://10.58.7.49:8000/comments/${this.state.props_id}`, {
         method: "GET",
         headers: {
-          Authorization: this.token,
+          Authorization: localStorage.getItem("login_token"),
           "Content-Type": "application/json"
         }
       })
-        .then(response => response.json())
-        .then(response => {
-          // debugger;
-          this.setState({ commentData: response.comments });
-        });
-  };
+      .then(response => response.json())
+         .then(response => {
+        this.setState({ commentData: response.comments });
+      })
+ 
+    });
+  }
 
-  render() {
+  render() {console.log(this.state.props_id)
     return (
       <div>
         <div className="commnet_text">질문을 하거나 칭찬을 남겨주세요</div>
@@ -78,7 +107,8 @@ class DetailComment extends React.Component {
           {
             (this.state.commentData.length !== 0)?
             (this.state.commentData.map(el=>{
-              return <CommentRI item={el}/>
+              console.log(el.comment_id)
+              return <CommentRI id={el.comment_id}item={el} data={this.state.props_id} delete={this.delete}/>
             })) : ""
           } 
         </div>
@@ -91,6 +121,7 @@ class DetailComment extends React.Component {
             onChange={this.isComment}
             placeholder="댓글 추가"
             className="comment_box_input"
+            value={this.state.context}
           ></input>
         </div>
         <div className="comment_button_wrap">

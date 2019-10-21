@@ -12,17 +12,14 @@ class Login extends React.Component {
     this.state = { valueId: "", valuePW: "" };
   }
 
-  inputValueId = e => {
-    this.setState({ valueId: e.target.value });
-  };
-  inputValuePW = e => {
-    this.setState({ valuePW: e.target.value });
-  };
-  signupMove = () => {
-    this.props.history.push("signup");
+  inputValueInfo = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   onClickLogin = () => {
+
     window.Kakao.Auth.login({
       success: kakaotoken => {
         fetch(`${API_IP}/users/login`, {
@@ -56,6 +53,7 @@ class Login extends React.Component {
   };
 
   responseGoogle = response => {
+
     fetch(`${API_IP}//users/google-login`, {
       method: "POST",
       headers: {
@@ -89,14 +87,18 @@ class Login extends React.Component {
             //  window.location.reload(false)
           });
       }
+
     });
   };
 
   responseFail = err => {
     console.log(err);
   };
+  signupMove=()=>{
+    this.props.history.push("/signup");}
 
   render() {
+    // console.log(this.state);
     return (
       <div>
         <div className="login_wrap">
@@ -112,7 +114,8 @@ class Login extends React.Component {
               </div>
               <div className="Login_title">Welcome to pinterest</div>
               <input
-                onChange={this.inputValueId}
+                name="valueId"
+                onChange={this.inputValueInfo}
                 className={`Login_input ${
                   this.state.valueId === "change" ? "input_change" : ""
                 }`}
@@ -124,7 +127,8 @@ class Login extends React.Component {
                 </div>
               )}
               <input
-                onChange={this.inputValuePW}
+                name="valuePW"
+                onChange={this.inputValueInfo}
                 className={`Login_input2 ${
                   this.state.valuePW === "change2" ? "input_change" : ""
                 }`}

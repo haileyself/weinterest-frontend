@@ -2,8 +2,40 @@ import React from "react";
 import "./Detail.scss";
 
 class CommentRI extends React.Component {
-  render() {
-    // debugger;
+  constructor(props){
+    super(props)
+    this.state={
+      toggle:true,
+      id:this.props.id,
+
+   }
+  }
+  reviseDelete=()=>{
+    this.setState({toggle:!this.state.toggle})
+
+    
+  }
+
+  revise=()=>{ 
+    fetch(`http://10.58.7.49:8000/comments/${this.state.id}`, {
+    method: "GET",
+    headers: {
+      Authorization: localStorage.getItem("login_token"),
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(response => {console.log("나sss는 누구인가",response.comments)
+      this.setState({ commentData: response.comments });
+    });
+
+  }
+
+
+
+  
+  
+  render() {  console.log( "넘버가 궁금합니다",this.state.id)
     return (
       <div>
         <div className="comment_img_wrap">
@@ -28,7 +60,11 @@ class CommentRI extends React.Component {
           <div className="icon2">
             <i class="fas fa-comment"></i>
           </div>
-          <div className="icon3">
+          <div onClick={this.reviseDelete} className="icon3">
+           {this.state.toggle === false ?<div className="revise_delete">
+              <div onClick={this.revise} className="item first">수정</div>
+              <div onClick={()=>this.props.delete(this.state.id)} className="item">삭제</div>
+            </div>:""} 
             <i className="fas fa-ellipsis-h"></i>
           </div>
           <div className="like">좋아요1개</div>

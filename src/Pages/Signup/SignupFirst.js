@@ -23,6 +23,7 @@ class SignupFirst extends Component {
   }
   componentDidMount() {
     //console.log("여기에!", this.props);
+
     fetch(`${API_IP}/countries`, {
       method: "GET",
       headers: {
@@ -36,6 +37,7 @@ class SignupFirst extends Component {
           countryList: response.countries
         });
       });
+
 
     fetch(`${API_IP}/languages`, {
       method: "GET",

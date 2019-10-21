@@ -19,6 +19,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
+
     fetch(`${API_IP}/pins?offset=0&limit=50`, {
       method: "GET",
       headers: {

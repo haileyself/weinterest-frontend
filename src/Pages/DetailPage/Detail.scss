@@ -784,6 +784,7 @@
           background-color: rgba(12, 9, 9, 0.1);
         }
         .icon3 {
+          position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -791,6 +792,27 @@
           margin-left: 10px;
           color: #8e8e8e;
           cursor: pointer;
+          .revise_delete {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            position: absolute;
+            background-color: white;
+            border-radius: 10px;
+            width: 200px;
+            height: 100px;
+            margin-top: 65px;
+            margin-left: -5px;
+            z-index: 100;
+            .item {
+              color: black;
+              font-weight: 500;
+              padding: 10px;
+              // border: 1px solid black;
+            }
+          }
         }
         .icon3:hover {
           border-radius: 50%;

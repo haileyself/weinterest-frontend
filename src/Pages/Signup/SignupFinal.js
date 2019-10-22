@@ -90,7 +90,7 @@ class SignupFinal extends Component {
     )
       .then(response => response.json())
       .then(response => {
-        //console.log(response);
+        // console.log("test",response);
         //debugger;
         if (response.message === "USER_CAGEGORY_UPDATE") {
           this.props.history.push("/");

@@ -20,37 +20,34 @@ class Login extends React.Component {
 
   onClickLogin = () => {
 
-    window.Kakao.Auth.login({
-      success: kakaotoken => {
-        fetch(`${API_IP}/users/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email: this.state.valueId,
-            password: this.state.valuePW
-          })
-        })
-          .then(response => response.json())
-          .then(response => {
-            //console.log("나다", response);
-            if (response.access_token) {
-              localStorage.setItem("login_token", response.access_token);
-              this.props.history.push("/");
-              window.location.reload(true);
-            } else {
-              alert("일치하지않습니다");
-            }
-          });
+    fetch(`${API_IP}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.valueId,
+        password: this.state.valuePW
+      })
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log("나다", response);
+        if (response.access_token) {
+          localStorage.setItem("login_token", response.access_token);
+          this.props.history.push("/");
+          window.location.reload(true);
+        } else {
+          alert("일치하지않습니다");}
+        });
         if (this.state.valueId === "") {
           this.setState({ valueId: "change" });
         } else if (this.state.valuePW === "") {
           this.setState({ valuePW: "change2" });
         }
-      }
-    });
-  };
+          
+  }
+  
 
   responseGoogle = response => {
 

@@ -62,6 +62,21 @@ class Mypage extends React.Component {
   };
 
   toggleClass = () => {
+    fetch(`${API_IP}/boards`, {
+      method: "GET",
+      headers: {
+        Authorization: this.token,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        //console.log(response.pins);
+        this.setState({
+          items: response.boards
+        });
+      });
+      
     this.setState({ active: !this.state.active });
   };
   render() {

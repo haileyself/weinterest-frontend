@@ -7,8 +7,11 @@ class CreateList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      myBoards: null,
       modal: false
     };
+
+    this.token = localStorage.getItem("login_token");
   }
 
   handleOpenModal = () => {
@@ -50,9 +53,10 @@ class CreateList extends React.Component {
       */
 
   onComplete = () => {
-    // debugger
+    
     this.callMyBoard();
     this.handleCloseModal();
+    this.props.handleClick();
     // this.setBoardFlag();
   };
 

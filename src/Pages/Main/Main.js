@@ -28,7 +28,7 @@ class Main extends Component {
       }
     })
       .then(response => response.json())
-      .then(response => {
+      .then(response => {console.log("meme",response)
         this.setState({ mainBox: response.pins });
       });
   }

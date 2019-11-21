@@ -1,7 +1,7 @@
-# Wecode 3기 프로젝트 / Pinterest Clone  
+# Wecode 3기 프로젝트 / Weinterest Clone  
 
- 이미지를 포스팅하고 다른 이용자와 공유하는 소셜네트워크 서비스(Pinterest) Clone Project
-
+ 이미지를 포스팅하고 다른 이용자와 공유하는 소셜네트워크 서비스인 Pinterest Clone Project
+ 
 ## Technical Stack
 
 - Javascript

@@ -1,14 +1,5 @@
 # Wecode 3기 프로젝트 / Weinterest Clone  
 이미지를 포스팅하고 다른 이용자와 공유하는 소셜네트워크 서비스인 Pinterest Clone Project
-
-
- ![pinterest_main](https://user-images.githubusercontent.com/51526739/69913544-44bda180-147c-11ea-8d1e-a3bead3f0733.jpg)
- ![pinterest_makeboard](https://user-images.githubusercontent.com/51526739/69914143-05934e80-1484-11ea-8df4-fdf9f316cd25.jpg)
- ![pinterest_mypage](https://user-images.githubusercontent.com/51526739/69914150-193eb500-1484-11ea-8a84-5621eb26539c.png)
- ![pinterest_detailpage](https://user-images.githubusercontent.com/51526739/69914161-3c696480-1484-11ea-8c42-587058e7ee13.png)
- ![pinterest_signupPage](https://user-images.githubusercontent.com/51526739/69914174-628f0480-1484-11ea-98b5-496a5ed91682.png)
-
-
  
 ## Technical Stack
 
@@ -40,3 +31,10 @@
 - 리액트 모달 기능 구현
 - RESTful API를 활용하여 서버통신
 - NODE_PATH src로 설정 후 절대 경로 사용
+
+
+ ![pinterest_main](https://user-images.githubusercontent.com/51526739/69913544-44bda180-147c-11ea-8d1e-a3bead3f0733.jpg)
+ ![pinterest_makeboard](https://user-images.githubusercontent.com/51526739/69914143-05934e80-1484-11ea-8df4-fdf9f316cd25.jpg)
+ ![pinterest_mypage](https://user-images.githubusercontent.com/51526739/69914150-193eb500-1484-11ea-8a84-5621eb26539c.png)
+ ![pinterest_detailpage](https://user-images.githubusercontent.com/51526739/69914161-3c696480-1484-11ea-8c42-587058e7ee13.png)
+ ![pinterest_signupPage](https://user-images.githubusercontent.com/51526739/69914174-628f0480-1484-11ea-98b5-496a5ed91682.png)
